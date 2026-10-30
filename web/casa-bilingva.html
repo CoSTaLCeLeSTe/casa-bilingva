@@ -1,0 +1,1374 @@
+<title>Casa Bilingvă</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+/* Concepto: un camino por Rumanía (Bucarest → Constanța), azul de Voroneț y bandas de punto de cruz de la «ie» */
+:root{
+  --bg:#F4F2EA; --surface:#FFFFFF; --ink:#101C45; --muted:#56607F; --line:#D8DCE8;
+  --blue:#002B7F; --blue-soft:#DDE4F6; --red:#CE1126; --red-soft:#FADCE0; --gold:#9A7400; --gold-soft:#FFF3C4; --yellow:#FCD116;
+  --wash-b:#E1E8F8; --wash-y:#FFF6D2; --wash-r:#FBE3E6;
+  --sky1:#8FAFEA; --sky2:#EAF0FB; --mtn1:#6E86BE; --hill:#4E8A5A; --fir:#2C5C38; --wall:#F4EFE4;
+  --ok:#1E8C57; --ok-soft:#DCF2E5; --bad:#CE1126; --bad-soft:#FADCE0;
+  --display:'Baloo 2', 'Trebuchet MS', system-ui, sans-serif;
+  --body:'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --r:16px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#08102E; --surface:#121B45; --ink:#EAEEFA; --muted:#9FAAD0; --line:#27336A;
+  --blue:#7A9CFF; --blue-soft:#1C2A68; --red:#FF5D70; --red-soft:#3F1626; --gold:#FCD116; --gold-soft:#36300F; --yellow:#FCD116;
+  --wash-b:#0B1A50; --wash-y:#1B1A12; --wash-r:#2A0F1E;
+  --sky1:#0A1440; --sky2:#26357A; --mtn1:#27387A; --hill:#1D4029; --fir:#12301C; --wall:#CFC8B8;
+  --ok:#4CD496; --ok-soft:#123A2C; --bad:#FF5D70; --bad-soft:#3F1626; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#08102E; --surface:#121B45; --ink:#EAEEFA; --muted:#9FAAD0; --line:#27336A;
+  --blue:#7A9CFF; --blue-soft:#1C2A68; --red:#FF5D70; --red-soft:#3F1626; --gold:#FCD116; --gold-soft:#36300F; --yellow:#FCD116;
+  --wash-b:#0B1A50; --wash-y:#1B1A12; --wash-r:#2A0F1E;
+  --sky1:#0A1440; --sky2:#26357A; --mtn1:#27387A; --hill:#1D4029; --fir:#12301C; --wall:#CFC8B8;
+  --ok:#4CD496; --ok-soft:#123A2C; --bad:#FF5D70; --bad-soft:#3F1626; color-scheme:dark}
+html,body{height:100%}
+[hidden]{display:none!important}
+body{background:var(--bg) linear-gradient(90deg,var(--wash-b) 0 33.34%,var(--wash-y) 33.34% 66.67%,var(--wash-r) 66.67%) fixed;color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.45;-webkit-tap-highlight-color:transparent}
+*{box-sizing:border-box}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+h1,h2,h3{font-family:var(--display);line-height:1.1;margin:0;text-wrap:balance}
+.wrap{max-width:560px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:12px 110px}
+.stitch{height:10px;background:
+  conic-gradient(from 45deg at 50% 50%, var(--red) 0 25%, transparent 0 50%, var(--red) 0 75%, transparent 0) 0 0/10px 10px;opacity:.85}
+.stitch.ink{background:conic-gradient(from 45deg at 50% 50%, var(--blue) 0 25%, transparent 0 50%, var(--blue) 0 75%, transparent 0) 0 0/10px 10px}
+
+/* cabecera */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg) linear-gradient(90deg,var(--wash-b) 0 33.34%,var(--wash-y) 33.34% 66.67%,var(--wash-r) 66.67%) fixed}
+.tricolor{height:8px;background:linear-gradient(90deg,#002B7F 0 33.34%,#FCD116 33.34% 66.67%,#CE1126 66.67%)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.topbar{display:flex;align-items:center;gap:10px;padding-block:10px;max-width:560px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.brand{font-family:var(--display);font-weight:800;font-size:22px;color:var(--blue);margin-right:auto;letter-spacing:-.01em}
+.brand span{color:var(--red)}
+.brand i{font-style:normal;color:var(--gold)}
+.chip{display:inline-flex;align-items:center;gap:4px;font-weight:800;font-variant-numeric:tabular-nums;padding:4px 10px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-size:15px}
+.chip.fire{color:var(--red)} .chip.xp{color:var(--gold)}
+.chip.off{color:var(--muted)}
+
+/* tarjetas */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.stack{display:flex;flex-direction:column;gap:14px}
+.row{display:flex;gap:12px;align-items:center}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+.label{font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:800;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 18px;border-radius:14px;font-weight:800;font-size:16px;background:var(--blue);color:#fff;box-shadow:0 4px 0 color-mix(in srgb,var(--blue) 60%,#000);transition:transform .08s}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 color-mix(in srgb,var(--blue) 60%,#000)}
+.btn.red{background:var(--red);box-shadow:0 4px 0 color-mix(in srgb,var(--red) 60%,#000)}
+.btn.ok{background:var(--ok);box-shadow:0 4px 0 color-mix(in srgb,var(--ok) 60%,#000)}
+.btn.ghost{background:var(--surface);color:var(--ink);border:2px solid var(--line);box-shadow:0 3px 0 var(--line)}
+.btn.block{width:100%}
+.btn[disabled]{opacity:.45;pointer-events:none}
+:root:not([data-theme="light"]) .btn{color:#fff}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn:not(.ghost){color:#0A1130}}
+:root[data-theme="dark"] .btn:not(.ghost){color:#0A1130}
+
+/* meta del día */
+.goal{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center}
+.ring{--p:0;width:86px;height:86px;border-radius:50%;background:conic-gradient(var(--red) calc(var(--p)*1%),var(--line) 0);display:grid;place-items:center}
+.ring>div{width:68px;height:68px;border-radius:50%;background:var(--surface);display:grid;place-items:center;text-align:center;font-family:var(--display);font-weight:800;line-height:1}
+.ring b{font-size:24px} .ring small{font-size:11px;color:var(--muted);font-family:var(--body)}
+.bar{height:12px;border-radius:99px;background:var(--line);overflow:hidden}
+.bar>i{display:block;height:100%;background:var(--yellow);border-radius:99px;transition:width .5s}
+.bar.blue>i{background:var(--blue)}
+.lvl{font-family:var(--display);font-weight:800;font-size:20px}
+.phrase{background:var(--blue);color:#fff;border:0;position:relative;overflow:hidden}
+.phrase .ro{font-family:var(--display);font-size:24px;font-weight:700}
+.phrase .es{opacity:.85}
+.phrase .label{color:rgba(255,255,255,.75)}
+.phrase .speak{position:absolute;right:12px;top:12px;background:rgba(255,255,255,.18);color:#fff}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .phrase{background:var(--blue-soft)}}
+:root[data-theme="dark"] .phrase{background:var(--blue-soft)}
+
+/* ruta */
+.route{position:relative;display:flex;flex-direction:column;gap:22px;padding:8px 0 4px}
+.route::before{content:"";position:absolute;left:50%;top:30px;bottom:30px;border-left:4px dashed var(--line);transform:translateX(-2px)}
+.node{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;width:150px;text-align:center}
+.node:nth-child(odd){align-self:flex-start;margin-left:8%}
+.node:nth-child(even){align-self:flex-end;margin-right:8%}
+.disc{width:76px;height:76px;border-radius:50%;display:grid;place-items:center;font-size:34px;background:var(--blue);color:#fff;box-shadow:0 6px 0 color-mix(in srgb,var(--blue) 55%,#000);border:4px solid var(--surface);transition:transform .1s}
+.node button:active .disc{transform:translateY(4px);box-shadow:0 2px 0 color-mix(in srgb,var(--blue) 55%,#000)}
+.node.done .disc{background:#FCD116;box-shadow:0 6px 0 #B89400}
+.node.lock .disc{background:var(--line);color:var(--muted);box-shadow:0 6px 0 color-mix(in srgb,var(--line) 70%,#000)}
+.node.next .disc{animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.07)}}
+.node .city{font-family:var(--display);font-weight:800;font-size:17px;line-height:1}
+.node .ut{font-size:13px;color:var(--muted);line-height:1.2}
+.stars{color:var(--gold);letter-spacing:2px;font-size:15px}
+.stars .e{color:var(--line)}
+.node > button{display:flex;flex-direction:column;align-items:center;gap:6px;background:transparent;padding:4px;border-radius:12px}
+.future{opacity:.8;border-style:dashed}
+
+/* tabs inferiores */
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px);padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
+.tabs nav{max-width:560px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+.tabs button{padding:8px 4px 10px;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:12px;font-weight:800;color:var(--muted)}
+.tabs button svg{width:26px;height:26px}
+.tabs button[aria-current="true"]{color:var(--blue)}
+
+/* hoja / modal */
+.sheet{position:fixed;inset:0;z-index:20;background:var(--bg);overflow:auto}
+.sheet .wrap{padding-bottom:40px}
+.x{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;color:var(--muted);font-size:26px;line-height:1}
+.speak{width:40px;height:40px;border-radius:12px;display:inline-grid;place-items:center;background:var(--blue-soft);color:var(--blue);flex:none}
+.speak svg{width:22px;height:22px}
+.vocab{display:grid;grid-template-columns:1fr;gap:0}
+.vocab div{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)}
+.vocab div:last-child{border-bottom:0}
+.vocab b{font-weight:800}
+table.mini{border-collapse:collapse;margin:6px 0;font-size:15px;width:100%}
+table.mini td,table.mini th{border-bottom:1px solid var(--line);padding:5px 6px;text-align:left}
+table.mini th{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.tablewrap{overflow-x:auto}
+.theory h2{font-size:26px;color:var(--blue)}
+.theory .body{font-size:17px}
+.examples{display:flex;flex-wrap:wrap;gap:8px}
+.ex-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:var(--blue-soft);color:var(--blue);font-weight:800}
+.reto{background:var(--gold-soft);border-color:transparent}
+.check{width:28px;height:28px;border-radius:8px;border:2px solid var(--gold);display:grid;place-items:center;font-weight:800;flex:none}
+.check.on{background:var(--gold);color:#fff}
+
+/* ejercicio */
+.qhead{display:flex;align-items:center;gap:10px;padding-block:6px}
+.qhead .bar{flex:1}
+.hearts{font-weight:800;color:var(--muted);font-variant-numeric:tabular-nums}
+.prompt{font-family:var(--display);font-size:24px;font-weight:700}
+.kind{font-size:13px;font-weight:800;color:var(--red);text-transform:uppercase;letter-spacing:.08em}
+.opts{display:grid;gap:10px}
+.opt{text-align:left;padding:14px 16px;border-radius:14px;border:2px solid var(--line);background:var(--surface);font-weight:700;font-size:17px;box-shadow:0 3px 0 var(--line)}
+.opt.sel{border-color:var(--blue);background:var(--blue-soft);color:var(--blue);box-shadow:0 3px 0 var(--blue)}
+.opt.right{border-color:var(--ok);background:var(--ok-soft);color:var(--ok)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft);color:var(--bad)}
+.gap{display:inline-block;min-width:70px;border-bottom:3px solid var(--blue);text-align:center;color:var(--blue);padding:0 4px}
+.answer-line{min-height:60px;border-bottom:2px solid var(--line);display:flex;flex-wrap:wrap;gap:8px;padding:8px 0;align-content:flex-start}
+.bank{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding-top:8px}
+.tile{padding:9px 13px;border-radius:12px;border:2px solid var(--line);background:var(--surface);font-weight:800;font-size:17px;box-shadow:0 3px 0 var(--line)}
+.tile.used{visibility:hidden}
+.pairs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pairs .col{display:flex;flex-direction:column;gap:10px}
+.pairs .opt{text-align:center;padding:12px 8px;font-size:16px}
+.pairs .opt.gone{opacity:.35;pointer-events:none;border-color:var(--ok);box-shadow:none}
+.pairs .opt.shake{animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+textarea.write{width:100%;min-height:96px;border-radius:14px;border:2px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;font-size:18px;padding:12px;resize:none}
+.dia{display:flex;gap:8px;flex-wrap:wrap}
+.dia button{width:44px;height:44px;border-radius:12px;border:2px solid var(--line);background:var(--surface);font-weight:800;font-size:19px;box-shadow:0 3px 0 var(--line)}
+.bigspeak{display:flex;gap:12px;justify-content:center}
+.bigspeak button{width:96px;height:96px;border-radius:24px;background:var(--blue);color:#fff;display:grid;place-items:center;box-shadow:0 5px 0 color-mix(in srgb,var(--blue) 55%,#000)}
+.bigspeak button.slow{width:64px;height:64px;align-self:end;background:var(--blue-soft);color:var(--blue);box-shadow:0 4px 0 var(--line);font-size:13px;font-weight:800}
+.bigspeak svg{width:44px;height:44px}
+.feedback{position:fixed;left:0;right:0;bottom:0;z-index:25;padding:16px max(16px,env(safe-area-inset-right,0px)) calc(16px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));border-top:2px solid;animation:up .2s ease-out}
+.feedback .in{max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+.feedback.good{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.feedback.bad{background:var(--bad-soft);border-color:var(--bad);color:var(--bad)}
+.feedback h3{font-size:24px}
+.feedback .sol{color:var(--ink);font-weight:700}
+.feedback .exp{color:var(--ink);font-size:15px}
+@keyframes up{from{transform:translateY(100%)}}
+.footer-action{position:fixed;left:0;right:0;bottom:0;z-index:15;background:var(--bg);border-top:1px solid var(--line);padding:12px max(16px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.footer-action .in{max-width:560px;margin:0 auto;display:flex;gap:10px}
+.footer-action .btn{flex:1}
+
+/* tarjetas de vocabulario */
+.flash{min-height:240px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;cursor:pointer}
+.flash .front{font-family:var(--display);font-size:32px;font-weight:800}
+.flash .back{font-family:var(--display);font-size:28px;color:var(--blue);font-weight:800}
+.boxes{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;text-align:center}
+.boxes div{background:var(--blue-soft);border-radius:10px;padding:8px 2px;font-weight:800;font-variant-numeric:tabular-nums}
+.boxes small{display:block;font-size:11px;color:var(--muted);font-weight:700}
+
+/* logros */
+.achs{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.ach{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.ach .ic{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-size:26px;background:var(--gold-soft)}
+.ach.lockd{opacity:.5}
+.ach.lockd .ic{background:var(--line);filter:grayscale(1)}
+.ach h3{font-size:17px}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.stat b{display:block;font-family:var(--display);font-size:28px;line-height:1;font-variant-numeric:tabular-nums}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;align-items:end;height:110px}
+.week div{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px;height:100%;font-size:11px;color:var(--muted);font-weight:700}
+.week i{display:block;width:100%;max-width:28px;background:var(--blue);border-radius:6px 6px 2px 2px;min-height:3px}
+.week .today i{background:var(--red)}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg button{padding:8px 12px;border-radius:999px;border:2px solid var(--line);font-weight:800;font-size:14px}
+.seg button[aria-pressed="true"]{border-color:var(--blue);background:var(--blue-soft);color:var(--blue)}
+.toast{position:fixed;left:50%;top:calc(14px + env(safe-area-inset-top,0px));transform:translateX(-50%);z-index:40;background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:14px;font-weight:800;display:flex;gap:10px;align-items:center;max-width:92vw;animation:drop .3s ease-out}
+@keyframes drop{from{transform:translate(-50%,-30px);opacity:0}}
+canvas#confetti{position:fixed;inset:0;pointer-events:none;z-index:50}
+.result{text-align:center;align-items:center}
+.result .big{font-family:var(--display);font-size:56px;font-weight:800;color:var(--gold);line-height:1}
+textarea.code{width:100%;min-height:80px;font-family:ui-monospace,monospace;font-size:12px;border-radius:12px;border:2px solid var(--line);background:var(--surface);color:var(--ink);padding:8px}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+<div class="top"><div class="topbar">
+  <div class="brand">Casa <span>Bilingvă</span></div>
+  <span class="chip fire" id="hStreak" title="Racha de días">🔥 0</span>
+  <span class="chip xp" id="hXp" title="Experiencia total">⭐ 0</span>
+</div><div class="tricolor"></div></div>
+<main class="wrap" id="view"></main>
+<div class="tabs"><nav id="tabs"></nav></div>
+<div id="layer"></div>
+<canvas id="confetti" hidden></canvas>
+<style>
+/* reparto, chat, plan del día */
+.av{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:20px;color:#fff;flex:none;background:var(--blue)}
+.av.rux{background:var(--red)} .av.gab{background:var(--gold)} .av.mar{background:var(--blue)} .av.me{background:var(--ok)}
+.av.lg{width:64px;height:64px;font-size:28px}
+.cast{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.cast .card{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;padding:12px 8px}
+.cast b{font-family:var(--display);font-size:17px;line-height:1}
+.meter{width:100%;height:8px;border-radius:9px;background:var(--line);overflow:hidden}
+.meter i{display:block;height:100%;background:var(--red);border-radius:9px;transition:width .6s}
+.plan{display:flex;flex-direction:column;gap:2px}
+.plan button{display:flex;align-items:center;gap:12px;text-align:left;padding:10px 4px;border-bottom:1px solid var(--line)}
+.plan button:last-child{border-bottom:0}
+.plan .tick{width:28px;height:28px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;flex:none;font-weight:800;color:#fff}
+.plan .on .tick{background:var(--ok);border-color:var(--ok)}
+.plan .on .pt{text-decoration:line-through;color:var(--muted)}
+.plan .pt{font-weight:800;display:block}
+.plan .ps{font-size:13px;color:var(--muted);display:block}
+.plan .go{margin-left:auto;color:var(--muted);font-size:20px}
+.chat{display:flex;flex-direction:column;gap:12px;padding-bottom:150px}
+.msg{display:flex;gap:8px;align-items:flex-end;max-width:88%}
+.msg.me{align-self:flex-end;flex-direction:row-reverse}
+.bubble{padding:10px 14px;border-radius:18px;background:var(--surface);border:1px solid var(--line);font-size:17px;min-width:0;overflow-wrap:anywhere}
+.msg.npc .bubble{border-bottom-left-radius:6px}
+.msg.me .bubble{background:var(--blue);color:#fff;border-color:transparent;border-bottom-right-radius:6px}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .msg.me .bubble{background:var(--blue-soft);color:var(--ink)}}
+:root[data-theme="dark"] .msg.me .bubble{background:var(--blue-soft);color:var(--ink)}
+.bubble .tr{display:block;font-size:14px;color:var(--muted);margin-top:4px}
+.bubble .tools{display:flex;gap:6px;margin-top:6px}
+.bubble .tools button{font-size:13px;font-weight:800;color:var(--blue);padding:2px 0}
+.fix{align-self:flex-end;max-width:88%;background:var(--gold-soft);border-radius:14px;padding:8px 12px;font-size:15px}
+.fix b{color:var(--ink)}
+.fix.okk{background:var(--ok-soft);color:var(--ok);font-weight:800}
+.composer{position:fixed;left:0;right:0;bottom:0;z-index:22;background:var(--bg);border-top:1px solid var(--line);padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.composer .in{max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:8px}
+.composer .line{display:flex;gap:8px;align-items:flex-end}
+.composer textarea{flex:1;min-width:0;min-height:48px;max-height:120px;border-radius:14px;border:2px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;font-size:17px;padding:10px 12px;resize:none}
+.composer .send{width:52px;height:52px;border-radius:14px;background:var(--blue);color:#fff;display:grid;place-items:center;flex:none}
+.composer .dia button{width:38px;height:36px;font-size:17px}
+.typing{color:var(--muted);font-style:italic;padding-left:52px}
+.scene-goal{background:var(--blue-soft);color:var(--ink);border-radius:14px;padding:10px 12px;font-size:15px}
+.list{display:flex;flex-direction:column;gap:10px}
+.item{display:flex;gap:12px;align-items:center;text-align:left;width:100%}
+.item .grow{flex:1;min-width:0}
+.item h3{font-size:18px}
+.pill{display:inline-block;font-size:12px;font-weight:800;padding:3px 9px;border-radius:99px;background:var(--line);color:var(--muted)}
+.pill.wait{background:var(--gold-soft);color:var(--gold)}
+.pill.ok{background:var(--ok-soft);color:var(--ok)}
+.pill.redo{background:var(--bad-soft);color:var(--bad)}
+.pill.lock{background:var(--line)}
+.rafa{background:var(--red);color:#fff;border:0}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .rafa{background:var(--red-soft);color:var(--ink)}}
+:root[data-theme="dark"] .rafa{background:var(--red-soft);color:var(--ink)}
+.rafa .ro{font-family:var(--display);font-size:26px;font-weight:800;line-height:1.1}
+.rafa .label{color:inherit;opacity:.8}
+.rafa .speak{background:rgba(255,255,255,.2);color:inherit}
+.rafa .btn.ghost{background:transparent;color:inherit;border-color:currentColor;box-shadow:none}
+.starpick{display:flex;gap:8px}
+.starpick button{font-size:30px;color:var(--line)}
+.starpick button.on{color:var(--gold)}
+input.txt,textarea.txt{width:100%;border-radius:12px;border:2px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;font-size:16px;padding:10px 12px}
+textarea.txt{min-height:90px;resize:vertical}
+.del{text-decoration:line-through;color:var(--bad)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{padding:8px 12px;border-radius:12px;background:var(--blue-soft);color:var(--blue);font-weight:700;font-size:14px;text-align:left}
+.rank{font-family:var(--display);font-weight:800;font-size:22px;color:var(--blue);line-height:1}
+.hello{font-family:var(--display);font-size:28px;font-weight:800;line-height:1.05}
+.hero{position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--line);background:var(--sky2)}
+.hero svg{display:block;width:100%;height:auto}
+.hero .cap{position:absolute;left:14px;top:12px;right:14px}
+.hero .cap .hello{color:var(--blue);text-shadow:0 1px 0 var(--sky2)}
+.hero .cap .small{color:var(--ink);font-weight:700}
+.obicei{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;border-left:6px solid var(--yellow)}
+.obicei .em{font-size:44px;line-height:1}
+.obicei b{font-family:var(--display);font-size:20px}
+.land{font-size:12px;color:var(--muted);font-weight:700}
+.emoji-row{display:flex;justify-content:space-around;font-size:28px;padding:4px 0}
+</style>
+<script>
+/* ====== CONTENIDO DEL CURSO · FASE 1 (A1 → A2) ====== */
+const UNITS = [
+{
+  id:'u0', city:'București', title:'Sonidos y letras', sub:'ă, â, î, ș, ț y cómo se lee el rumano',
+  theory:[
+    {h:'Las 5 letras especiales', b:'<b>ă</b> es una «e» neutra y relajada, como la de <i>the</i> en inglés: <i>apă</i> (agua).<br><b>â</b> e <b>î</b> suenan igual: una «i» dicha desde la garganta, sin sonreír: <i>român</i>, <i>în</i>.<br><b>ș</b> suena «sh»: <i>șase</i> (seis).<br><b>ț</b> suena «ts»: <i>țară</i> (país).', ro:['apă','român','șase','țară']},
+    {h:'C y G cambian ante e / i', b:'<b>ce, ci</b> = «che, chi»: <i>ce</i> (qué), <i>cine</i> (quién).<br><b>che, chi</b> = «que, qui»: <i>ochi</i> (ojos), <i>chiar</i> (realmente).<br><b>ge, gi</b> = «ye» fuerte, como la <i>j</i> inglesa de <i>jet</i>: <i>gen</i>.<br><b>ghe, ghi</b> = «gue, gui»: <i>ghid</i> (guía).', ro:['ce','cine','ochi','chiar','ghid']},
+    {h:'Î o â: ¿cuál se escribe?', b:'La regla es fácil: <b>î</b> al principio o al final de la palabra (<i>început</i>, <i>a urî</i>), <b>â</b> en el interior (<i>mâine</i>, <i>pâine</i>, <i>român</i>).<br>Y un truco de pronunciación: <i>eu</i>, <i>este</i>, <i>el</i>, <i>ea</i> se dicen «ieu», «ieste», «iel», «ia».', ro:['început','mâine','eu','este']}
+  ],
+  vocab:[['da','sí'],['nu','no'],['ce','qué'],['cine','quién'],['apă','agua'],['mâine','mañana'],['pâine','pan'],['țară','país'],['șase','seis'],['ochi','ojos'],['chiar','realmente'],['cer','cielo']],
+  ex:[
+    {t:'mc', q:'¿Cómo suena la «ș» de «șase»?', o:['sh, como en inglés «she»','s normal','ts','ch'], a:0},
+    {t:'mc', q:'La «ț» de «țară» suena como…', o:['ts','sh','t normal','z española'], a:0},
+    {t:'mc', q:'«ce» (qué) se pronuncia…', o:['che','se','que','ke'], a:0, ex:'Ante e / i, la c suena «ch». Para el sonido «k» se añade h: che, chi.'},
+    {t:'mc', q:'«chiar» se pronuncia…', o:['kiar','chiar','shiar','jiar'], a:0},
+    {t:'listen', ro:'Da', o:['Sí','No','Qué','Quién'], a:0},
+    {t:'listen', ro:'Nu', o:['No','Sí','Nunca','Nada'], a:0},
+    {t:'pairs', p:[['da','sí'],['nu','no'],['ce','qué'],['cine','quién'],['apă','agua']]},
+    {t:'mc', q:'¿Qué palabra se escribe con «î» y no con «â»?', o:['început','mâine','român','pâine'], a:0, ex:'î va al principio o al final de la palabra; â va en el interior.'},
+    {t:'write', es:'Escribe «agua» en rumano', ro:['apă']},
+    {t:'listen', ro:'Mâine', o:['Mañana','Mano','Madre','Pan'], a:0},
+    {t:'pairs', p:[['pâine','pan'],['țară','país'],['ochi','ojos'],['cer','cielo'],['șase','seis']]}
+  ],
+  reto:'Pide a tu mujer que diga despacio ă, â, î, ș y ț. Repite cada sonido 3 veces imitándola.'
+},
+{
+  id:'u1', city:'Brașov', title:'Mi familia', sub:'Posesivos, a avea, a se numi, a locui',
+  theory:[
+    {h:'El posesivo va detrás', b:'En rumano se dice «el chico mío»: el sustantivo lleva artículo y el posesivo va después.<br>❌ <i>meu băiat</i> → ✅ <b>băiatul meu</b><br><br><table class="mini"><tr><th></th><th>m. sg.</th><th>f. sg.</th><th>m. pl.</th><th>f. pl.</th></tr><tr><td>mi</td><td>meu</td><td>mea</td><td>mei</td><td>mele</td></tr><tr><td>tu</td><td>tău</td><td>ta</td><td>tăi</td><td>tale</td></tr></table>', ro:['băiatul meu','soția mea','copiii mei']},
+    {h:'El artículo «el / la»', b:'Masculino: se añade <b>-ul</b> (<i>băiat → băiatul</i>, <i>socru → socrul</i>); si acaba en -e, <b>-le</b> (<i>frate → fratele</i>).<br>Femenino: <b>-ă → -a</b> (<i>mamă → mama</i>), <b>-ie → -ia</b> (<i>soție → soția</i>).', ro:['socrul','fratele','mama','soția']},
+    {h:'Tres verbos clave', b:'<table class="mini"><tr><th></th><th>a avea</th><th>a se numi</th><th>a locui</th></tr><tr><td>eu</td><td>am</td><td>mă numesc</td><td>locuiesc</td></tr><tr><td>tu</td><td>ai</td><td>te numești</td><td>locuiești</td></tr><tr><td>el/ea</td><td>are</td><td>se numește</td><td>locuiește</td></tr><tr><td>noi</td><td>avem</td><td>ne numim</td><td>locuim</td></tr><tr><td>voi</td><td>aveți</td><td>vă numiți</td><td>locuiți</td></tr><tr><td>ei/ele</td><td>au</td><td>se numesc</td><td>locuiesc</td></tr></table>', ro:['mă numesc','locuiesc']},
+    {h:'La edad', b:'Del 20 en adelante se pone <b>de</b>: <i>Fiul meu are doi ani</i>, pero <i>Am patruzeci <b>de</b> ani</i>.', ro:['Fiul meu are doi ani']}
+  ],
+  vocab:[['soție','esposa'],['soț','marido'],['fiu','hijo'],['fiică','hija'],['băiat','niño, chico'],['fată','niña, chica'],['copil','niño, hijo'],['mamă','madre'],['tată','padre'],['frate','hermano'],['soră','hermana'],['socru','suegro'],['soacră','suegra'],['cumnat','cuñado'],['cumnată','cuñada'],['bunic','abuelo'],['bunică','abuela'],['părinți','padres'],['familie','familia']],
+  ex:[
+    {t:'mc', q:'¿Cómo se dice «mi esposa»?', o:['soția mea','soția meu','mea soție','soție mea'], a:0},
+    {t:'mc', q:'¿Cómo se dice «mi suegro»?', o:['socrul meu','socrul mea','meu socru','socru meu'], a:0},
+    {t:'gap', q:'___ meu se numește Rafa.', tr:'Mi hijo se llama Rafa.', o:['Fiul','Fiu','Fiica','Fiule'], a:0},
+    {t:'gap', q:'Noi ___ o casă în Sevilla.', tr:'Tenemos una casa en Sevilla.', o:['avem','am','aveți','au'], a:0},
+    {t:'gap', q:'Eu ___ José Antonio.', tr:'Me llamo José Antonio.', o:['mă numesc','se numește','te numești','ne numim'], a:0},
+    {t:'pairs', p:[['soacră','suegra'],['cumnat','cuñado'],['bunică','abuela'],['frate','hermano'],['soră','hermana']]},
+    {t:'build', es:'Mi hijo tiene dos años.', ro:'Fiul meu are doi ani', extra:['mea','au']},
+    {t:'build', es:'Mi mujer es rumana.', ro:'Soția mea este româncă', extra:['meu','român']},
+    {t:'write', es:'Vivo en Sevilla.', ro:['Locuiesc în Sevilla','Eu locuiesc în Sevilla']},
+    {t:'gap', q:'Am 40 ___ ani.', tr:'Tengo 40 años.', o:['de','la','cu','în'], a:0, ex:'A partir de 20 se pone «de» entre el número y el sustantivo.'},
+    {t:'listen', ro:'Cum se numește soția ta?', o:['¿Cómo se llama tu esposa?','¿Dónde vive tu esposa?','¿Cuántos años tiene tu esposa?','¿Tienes esposa?'], a:0},
+    {t:'write', es:'Tenemos un hijo.', ro:['Avem un fiu','Avem un copil','Avem un băiat','Noi avem un fiu','Noi avem un copil','Noi avem un băiat']}
+  ],
+  reto:'Pregunta a tu mujer «Cum se numesc părinții tăi?» y repite su respuesta en una frase completa.'
+},
+{
+  id:'u2', city:'Sibiu', title:'Saludos y cortesía', sub:'El verbo a fi, tú y usted',
+  theory:[
+    {h:'Saludar según la hora', b:'<b>Bună dimineața</b>: buenos días (temprano).<br><b>Bună ziua</b>: buenos días / buenas tardes.<br><b>Bună seara</b>: buenas tardes-noches, al llegar.<br><b>Noapte bună</b>: buenas noches, al irse a dormir.<br><b>Salut</b> / <b>Pa</b>: hola / chao, entre amigos.', ro:['Bună dimineața','Bună ziua','Bună seara','Noapte bună']},
+    {h:'Tú y usted', b:'Con tu mujer y con amigos: <b>tu</b>. Con los suegros al principio, o con desconocidos: <b>dumneavoastră</b>, con el verbo en 2ª persona del plural.<br><i>Ce faci?</i> (¿qué tal?, a ti) → <i>Ce faceți?</i> (a usted).<br><i>Te rog</i> → <i>Vă rog</i> (por favor).', ro:['Ce faci?','Ce faceți?','Vă rog']},
+    {h:'a fi (ser / estar)', b:'<table class="mini"><tr><td>eu</td><td>sunt</td><td>noi</td><td>suntem</td></tr><tr><td>tu</td><td>ești</td><td>voi</td><td>sunteți</td></tr><tr><td>el/ea</td><td>este (e)</td><td>ei/ele</td><td>sunt</td></tr></table>Un solo verbo para «ser» y «estar»: <i>Sunt spaniol</i> (soy español), <i>Sunt obosit</i> (estoy cansado).', ro:['Sunt spaniol','Sunt obosit']}
+  ],
+  vocab:[['Bună ziua','buenos días / tardes'],['Bună dimineața','buenos días (temprano)'],['Bună seara','buenas noches (al llegar)'],['Noapte bună','buenas noches (al dormir)'],['Salut','hola'],['La revedere','adiós'],['Pa','chao'],['Mulțumesc','gracias'],['Cu plăcere','de nada'],['Te rog','por favor (tú)'],['Vă rog','por favor (usted)'],['Scuze','perdón'],['Bine','bien'],['Ce faci?','¿qué tal?'],['Poftă bună!','¡buen provecho!'],['Noroc!','¡salud! (brindis)']],
+  ex:[
+    {t:'mc', q:'Llegas a casa de tus suegros a las 20:00. Dices…', o:['Bună seara','Noapte bună','Bună dimineața','Pa'], a:0},
+    {t:'mc', q:'Te vas a dormir. Dices…', o:['Noapte bună','Bună seara','Bună ziua','Salut'], a:0},
+    {t:'gap', q:'Tu ___ obosit?', tr:'¿Estás cansado?', o:['ești','este','sunt','sunteți'], a:0},
+    {t:'gap', q:'Părinții tăi ___ acasă.', tr:'Tus padres están en casa.', o:['sunt','este','suntem','ești'], a:0},
+    {t:'mc', q:'Para hablar de usted a tu suegra usas…', o:['dumneavoastră','tu','ei','noi'], a:0},
+    {t:'pairs', p:[['Mulțumesc','Gracias'],['Cu plăcere','De nada'],['Vă rog','Por favor (usted)'],['Scuze','Perdón'],['La revedere','Adiós']]},
+    {t:'build', es:'¿Qué tal? Bien, gracias.', ro:'Ce faci? Bine, mulțumesc.', extra:['faceți','rog']},
+    {t:'listen', ro:'Poftă bună!', o:['¡Buen provecho!','¡Salud!','¡Buenas noches!','¡Hasta luego!'], a:0},
+    {t:'write', es:'Buenas noches (al irte a dormir)', ro:['Noapte bună']},
+    {t:'mc', q:'En un brindis se dice…', o:['Noroc!','Poftă bună!','Pa!','Scuze!'], a:0},
+    {t:'gap', q:'Noi ___ în Sevilla.', tr:'Estamos en Sevilla.', o:['suntem','sunt','sunteți','este'], a:0},
+    {t:'write', es:'Soy español.', ro:['Sunt spaniol','Eu sunt spaniol']}
+  ],
+  reto:'Hoy saluda a tu mujer solo en rumano: «Bună seara» al llegar y «Noapte bună» al acostarte.'
+},
+{
+  id:'u3', city:'Sighișoara', title:'A la mesa', sub:'a mânca, a bea, vreau să… e îmi place',
+  theory:[
+    {h:'Quiero + verbo = vreau să…', b:'El rumano casi no usa infinitivo tras otro verbo: dice «quiero que coma».<br><b>Vreau să mănânc</b> (quiero comer), <b>Vrei să bei?</b> (¿quieres beber?).<br>En 3ª persona la forma cambia: <i>Rafa vrea să mănânce</i>. Lo practicaremos más adelante.', ro:['Vreau să mănânc','Vrei să bei?']},
+    {h:'Me gusta: îmi place / îmi plac', b:'Como en español, el verbo concuerda con lo que gusta:<br><b>Îmi place</b> cafeaua (me gusta el café).<br><b>Îmi plac</b> sarmalele (me gustan los sarmale).<br>Negación: <b>Nu-mi place</b> peștele.', ro:['Îmi place cafeaua','Îmi plac sarmalele','Nu-mi place peștele']},
+    {h:'a mânca y a bea', b:'<table class="mini"><tr><th></th><th>a mânca</th><th>a bea</th></tr><tr><td>eu</td><td>mănânc</td><td>beau</td></tr><tr><td>tu</td><td>mănânci</td><td>bei</td></tr><tr><td>el/ea</td><td>mănâncă</td><td>bea</td></tr><tr><td>noi</td><td>mâncăm</td><td>bem</td></tr><tr><td>voi</td><td>mâncați</td><td>beți</td></tr><tr><td>ei/ele</td><td>mănâncă</td><td>beau</td></tr></table>', ro:['mănânc','beau']}
+  ],
+  vocab:[['pâine','pan'],['apă','agua'],['vin','vino'],['bere','cerveza'],['cafea','café'],['lapte','leche'],['ceai','té'],['carne','carne'],['pește','pescado'],['brânză','queso'],['ciorbă','sopa agria'],['sarmale','rollitos de col'],['mămăligă','polenta'],['ou','huevo'],['fructe','fruta'],['mic dejun','desayuno'],['prânz','almuerzo'],['cină','cena'],['delicios','delicioso']],
+  ex:[
+    {t:'gap', q:'Eu ___ pâine.', tr:'Yo como pan.', o:['mănânc','mănâncă','mâncăm','mănânci'], a:0},
+    {t:'gap', q:'Noi ___ vin.', tr:'Bebemos vino.', o:['bem','beau','bei','beți'], a:0},
+    {t:'gap', q:'Vreau ___ beau o bere.', tr:'Quiero beber una cerveza.', o:['să','a','de','că'], a:0},
+    {t:'gap', q:'Îmi ___ sarmalele.', tr:'Me gustan los sarmale.', o:['plac','place','placi','plăcut'], a:0},
+    {t:'gap', q:'Îmi ___ cafeaua.', tr:'Me gusta el café.', o:['place','plac','placi','plăcut'], a:0},
+    {t:'pairs', p:[['pâine','pan'],['brânză','queso'],['pește','pescado'],['lapte','leche'],['ou','huevo']]},
+    {t:'build', es:'Quiero comer sopa.', ro:'Vreau să mănânc ciorbă', extra:['mănâncă','a']},
+    {t:'write', es:'Me gusta el vino.', ro:['Îmi place vinul']},
+    {t:'listen', ro:'Este delicios!', o:['¡Está delicioso!','¡Está frío!','¡Tengo hambre!','¡Buen provecho!'], a:0},
+    {t:'mc', q:'«cina» significa…', o:['la cena','la cocina','el almuerzo','el desayuno'], a:0},
+    {t:'write', es:'Gracias, está delicioso.', ro:['Mulțumesc, este delicios','Mulțumesc, e delicios','Mersi, este delicios','Mersi, e delicios']},
+    {t:'mc', q:'«Nu-mi place peștele» significa…', o:['No me gusta el pescado','Me gusta el pescado','No como pescado','Quiero pescado'], a:0}
+  ],
+  reto:'En la próxima comida pide algo en rumano: «Îmi dai pâinea, te rog?» y termina con «Mulțumesc, e delicios!».'
+},
+{
+  id:'u4', city:'Cluj-Napoca', title:'Casa y rutina', sub:'Números, a face, a merge, a lucra, mă trezesc',
+  theory:[
+    {h:'Números del 1 al 10', b:'unu, doi, trei, patru, cinci, șase, șapte, opt, nouă, zece.<br>El 1 y el 2 tienen género: <i>un băiat, doi băieți</i> / <i>o fată, două fete</i>.', ro:['unu','doi','trei','patru','cinci','șase','șapte','opt','nouă','zece']},
+    {h:'Verbos reflexivos', b:'Igual que «me levanto»: <b>mă trezesc</b> (me despierto), <b>te trezești</b>, <b>se trezește</b>, <b>ne trezim</b>, <b>vă treziți</b>, <b>se trezesc</b>.<br>La hora: <b>la ora șapte</b> (a las siete).', ro:['Mă trezesc la ora șapte']},
+    {h:'a face, a merge, a lucra', b:'<table class="mini"><tr><th></th><th>a face</th><th>a merge</th><th>a lucra</th></tr><tr><td>eu</td><td>fac</td><td>merg</td><td>lucrez</td></tr><tr><td>tu</td><td>faci</td><td>mergi</td><td>lucrezi</td></tr><tr><td>el/ea</td><td>face</td><td>merge</td><td>lucrează</td></tr><tr><td>noi</td><td>facem</td><td>mergem</td><td>lucrăm</td></tr><tr><td>voi</td><td>faceți</td><td>mergeți</td><td>lucrați</td></tr><tr><td>ei/ele</td><td>fac</td><td>merg</td><td>lucrează</td></tr></table><b>acasă</b> = a casa / en casa: <i>Merg acasă</i>.', ro:['Ce faci?','Merg acasă']}
+  ],
+  vocab:[['casă','casa'],['bucătărie','cocina'],['dormitor','dormitorio'],['baie','baño'],['sufragerie','salón'],['masă','mesa'],['scaun','silla'],['pat','cama'],['ușă','puerta'],['fereastră','ventana'],['lucru','trabajo'],['acasă','a casa, en casa'],['a dormi','dormir'],['unu','uno'],['doi','dos'],['trei','tres'],['patru','cuatro'],['cinci','cinco'],['șapte','siete'],['opt','ocho'],['nouă','nueve'],['zece','diez']],
+  ex:[
+    {t:'gap', q:'Eu ___ la lucru.', tr:'Voy al trabajo.', o:['merg','merge','mergem','mergi'], a:0},
+    {t:'gap', q:'Ce ___ tu?', tr:'¿Qué haces?', o:['faci','fac','face','facem'], a:0},
+    {t:'gap', q:'Eu ___ trezesc la ora șapte.', tr:'Me despierto a las siete.', o:['mă','te','se','ne'], a:0},
+    {t:'gap', q:'Soția mea ___ în Sevilla.', tr:'Mi mujer trabaja en Sevilla.', o:['lucrează','lucrez','lucrăm','lucrezi'], a:0},
+    {t:'pairs', p:[['bucătărie','cocina'],['dormitor','dormitorio'],['pat','cama'],['ușă','puerta'],['scaun','silla']]},
+    {t:'mc', q:'«două case»: ¿por qué «două» y no «doi»?', o:['Porque «casă» es femenino','Porque es plural','Porque va antes de consonante','Es una errata'], a:0},
+    {t:'mc', q:'¿Cómo se dice 8?', o:['opt','nouă','șase','șapte'], a:0},
+    {t:'listen', ro:'Cinci', o:['5','6','7','9'], a:0},
+    {t:'build', es:'Me despierto a las siete.', ro:'Mă trezesc la ora șapte', extra:['se','opt']},
+    {t:'write', es:'¿Qué haces?', ro:['Ce faci?','Ce faci tu?']},
+    {t:'write', es:'Voy a casa.', ro:['Merg acasă'], ex:'«a casa» es una sola palabra: acasă.'},
+    {t:'mc', q:'«fereastră» significa…', o:['ventana','puerta','silla','cocina'], a:0}
+  ],
+  reto:'Pega post-its con 10 palabras de la casa (ușă, pat, masă…) y dilas en voz alta cada vez que pases por delante.'
+},
+{
+  id:'u5', city:'Iași', title:'¿Qué hiciste ayer?', sub:'El pasado: perfect compus',
+  theory:[
+    {h:'Un solo pasado para casi todo', b:'Auxiliar <b>a avea</b> + participio, aunque en español digas «comí»:<br><b>am</b> mâncat, <b>ai</b> mâncat, <b>a</b> mâncat, <b>am</b> mâncat, <b>ați</b> mâncat, <b>au</b> mâncat.<br>Ojo: en 3ª singular es <b>a</b>, no «are».', ro:['Am mâncat','A mâncat','Au mâncat']},
+    {h:'Participios', b:'Regulares: <i>a lucra → lucrat</i>, <i>a vorbi → vorbit</i>, <i>a putea → putut</i>.<br>Irregulares para memorizar: <b>fost</b> (fi), <b>făcut</b> (face), <b>mers</b> (merge), <b>băut</b> (bea), <b>văzut</b> (vedea), <b>spus</b> (spune), <b>înțeles</b> (înțelege), <b>dat</b> (da).', ro:['am fost','am făcut','am văzut']},
+    {h:'Negación', b:'<b>Nu am fost</b>, en la conversación casi siempre <b>n-am fost</b>.<br><i>N-am înțeles</i>: no lo he entendido. Frase de supervivencia.', ro:['N-am înțeles']}
+  ],
+  vocab:[['ieri','ayer'],['aseară','anoche'],['azi','hoy'],['săptămâna trecută','la semana pasada'],['deja','ya'],['încă','todavía'],['niciodată','nunca'],['a vizita','visitar'],['film','película'],['magazin','tienda'],['parc','parque'],['plajă','playa']],
+  ex:[
+    {t:'gap', q:'Ieri ___ fost la parc.', tr:'Ayer fui al parque.', o:['am','sunt','a','au'], a:0},
+    {t:'gap', q:'Soția mea ___ gătit sarmale.', tr:'Mi mujer ha cocinado sarmale.', o:['a','am','au','are'], a:0},
+    {t:'gap', q:'Noi am ___ un film.', tr:'Vimos una película.', o:['văzut','vedea','văd','vedem'], a:0},
+    {t:'gap', q:'Ce ai ___ ieri?', tr:'¿Qué hiciste ayer?', o:['făcut','faci','face','fac'], a:0},
+    {t:'mc', q:'«N-am înțeles» significa…', o:['No lo he entendido','No lo entiendo','No lo entenderé','No quiero entenderlo'], a:0},
+    {t:'pairs', p:[['ieri','ayer'],['aseară','anoche'],['azi','hoy'],['niciodată','nunca'],['deja','ya']]},
+    {t:'build', es:'Ayer comimos sarmale.', ro:'Ieri am mâncat sarmale', extra:['a','mănânc']},
+    {t:'write', es:'Ayer fui a la playa.', ro:['Ieri am fost la plajă','Am fost ieri la plajă','Am fost la plajă ieri','Ieri am mers la plajă']},
+    {t:'listen', ro:'Am vorbit cu mama ta.', o:['He hablado con tu madre','Hablaré con tu madre','Hablo con tu madre','Habla con tu madre'], a:0},
+    {t:'gap', q:'Ei ___ venit aseară.', tr:'Ellos vinieron anoche.', o:['au','a','am','ați'], a:0},
+    {t:'write', es:'He bebido café.', ro:['Am băut cafea','Am băut o cafea']}
+  ],
+  reto:'Por la noche, cuéntale a tu mujer 3 cosas que hiciste hoy: «Azi am lucrat…, am mâncat…, am vorbit…».'
+},
+{
+  id:'u6', city:'Constanța', title:'Planes y futuro', sub:'o să…, voi…, los días de la semana',
+  theory:[
+    {h:'Futuro de la calle: o să', b:'<b>o să</b> + verbo (la «o» no cambia nunca):<br><i>O să merg</i> (iré), <i>o să mergem</i> (iremos).<br>En 3ª persona se usa la forma del conjuntivo: <i>Rafa o să <b>aibă</b> trei ani</i>, <i>o să <b>meargă</b></i>, <i>o să <b>fie</b></i>.', ro:['O să merg','Rafa o să aibă trei ani']},
+    {h:'Futuro formal: voi + infinitivo', b:'<b>voi, vei, va, vom, veți, vor</b> + infinitivo sin «a»:<br><i>Voi lucra</i> (trabajaré), <i>Vom călători</i> (viajaremos).<br>Lo verás en textos y en la tele.', ro:['Voi lucra','Vom călători']},
+    {h:'Los días', b:'luni, marți, miercuri, joi, vineri, sâmbătă, duminică (en minúscula).<br><i>Luni</i> = el lunes; <i>lunea</i> = los lunes.', ro:['luni','marți','miercuri','joi','vineri','sâmbătă','duminică']}
+  ],
+  vocab:[['luni','lunes'],['marți','martes'],['miercuri','miércoles'],['joi','jueves'],['vineri','viernes'],['sâmbătă','sábado'],['duminică','domingo'],['poimâine','pasado mañana'],['weekend','fin de semana'],['vacanță','vacaciones'],['a călători','viajar'],['munte','montaña'],['mare','mar'],['bilet','billete'],['avion','avión']],
+  ex:[
+    {t:'gap', q:'Mâine o să ___ la mare.', tr:'Mañana iré al mar.', o:['merg','merge','mers','mergeți'], a:0},
+    {t:'gap', q:'Noi ___ călători în România.', tr:'Viajaremos a Rumanía.', o:['vom','voi','vor','veți'], a:0},
+    {t:'gap', q:'Rafa o să ___ trei ani.', tr:'Rafa tendrá tres años.', o:['aibă','are','avea','avut'], a:0, ex:'Tras «o să», la 3ª persona usa el conjuntivo: să aibă.'},
+    {t:'pairs', p:[['luni','lunes'],['marți','martes'],['miercuri','miércoles'],['joi','jueves'],['vineri','viernes']]},
+    {t:'pairs', p:[['sâmbătă','sábado'],['duminică','domingo'],['munte','montaña'],['mare','mar'],['vacanță','vacaciones']]},
+    {t:'build', es:'El sábado iremos a la montaña.', ro:'Sâmbătă o să mergem la munte', extra:['merg','vom']},
+    {t:'write', es:'Mañana trabajaré.', ro:['Mâine o să lucrez','Mâine voi lucra','O să lucrez mâine','Voi lucra mâine']},
+    {t:'mc', q:'«Vrei să mergem la plajă?» significa…', o:['¿Quieres que vayamos a la playa?','¿Fuiste a la playa?','Iremos a la playa mañana','No quiero ir a la playa'], a:0},
+    {t:'listen', ro:'Ne vedem mâine!', o:['¡Nos vemos mañana!','¡Hasta luego!','¡Nos vemos el lunes!','¡Buenas noches!'], a:0},
+    {t:'gap', q:'Ei ___ veni duminică.', tr:'Ellos vendrán el domingo.', o:['vor','va','vom','voi'], a:0},
+    {t:'write', es:'En vacaciones viajaremos a Rumanía.', ro:['În vacanță o să călătorim în România','În vacanță vom călători în România','O să călătorim în România în vacanță','Vom călători în România în vacanță']}
+  ],
+  reto:'Propón a tu mujer un plan para el fin de semana en rumano: «Sâmbătă vrei să mergem la…?».'
+}
+];
+
+const FUTURE_PHASES = [
+  {n:'Fase 2 · B1', t:'Conversación fluida', d:'Casos (genitivo y dativo), pronombres, imperativo, condicional, conjuntivo completo.'},
+  {n:'Fase 3 · B2', t:'Independencia', d:'Prensa, series, debates, el presuntivo y los tiempos literarios.'},
+  {n:'Fase 4 · C1', t:'Matices', d:'Registros, expresiones idiomáticas, escritura cuidada.'},
+  {n:'Fase 5 · C2', t:'Casi nativo', d:'Literatura, humor, ironía y precisión total.'}
+];
+
+/* Verbos: presente, participio, infinitivo corto. null = no se practica ese tiempo */
+const VERBS = [
+  {inf:'a fi', es:'ser / estar', pr:['sunt','ești','este','suntem','sunteți','sunt'], pp:'fost', fu:'fi'},
+  {inf:'a avea', es:'tener', pr:['am','ai','are','avem','aveți','au'], pp:'avut', fu:'avea'},
+  {inf:'a vrea', es:'querer', pr:['vreau','vrei','vrea','vrem','vreți','vor'], pp:'vrut', fu:'vrea'},
+  {inf:'a putea', es:'poder', pr:['pot','poți','poate','putem','puteți','pot'], pp:'putut', fu:'putea'},
+  {inf:'a merge', es:'ir', pr:['merg','mergi','merge','mergem','mergeți','merg'], pp:'mers', fu:'merge'},
+  {inf:'a face', es:'hacer', pr:['fac','faci','face','facem','faceți','fac'], pp:'făcut', fu:'face'},
+  {inf:'a mânca', es:'comer', pr:['mănânc','mănânci','mănâncă','mâncăm','mâncați','mănâncă'], pp:'mâncat', fu:'mânca'},
+  {inf:'a bea', es:'beber', pr:['beau','bei','bea','bem','beți','beau'], pp:'băut', fu:'bea'},
+  {inf:'a vorbi', es:'hablar', pr:['vorbesc','vorbești','vorbește','vorbim','vorbiți','vorbesc'], pp:'vorbit', fu:'vorbi'},
+  {inf:'a locui', es:'vivir', pr:['locuiesc','locuiești','locuiește','locuim','locuiți','locuiesc'], pp:'locuit', fu:'locui'},
+  {inf:'a lucra', es:'trabajar', pr:['lucrez','lucrezi','lucrează','lucrăm','lucrați','lucrează'], pp:'lucrat', fu:'lucra'},
+  {inf:'a ști', es:'saber', pr:['știu','știi','știe','știm','știți','știu'], pp:'știut', fu:'ști'},
+  {inf:'a înțelege', es:'entender', pr:['înțeleg','înțelegi','înțelege','înțelegem','înțelegeți','înțeleg'], pp:'înțeles', fu:'înțelege'},
+  {inf:'a da', es:'dar', pr:['dau','dai','dă','dăm','dați','dau'], pp:'dat', fu:'da'},
+  {inf:'a veni', es:'venir', pr:['vin','vii','vine','venim','veniți','vin'], pp:'venit', fu:'veni'},
+  {inf:'a spune', es:'decir', pr:['spun','spui','spune','spunem','spuneți','spun'], pp:'spus', fu:'spune'},
+  {inf:'a vedea', es:'ver', pr:['văd','vezi','vede','vedem','vedeți','văd'], pp:'văzut', fu:'vedea'},
+  {inf:'a iubi', es:'amar, querer', pr:['iubesc','iubești','iubește','iubim','iubiți','iubesc'], pp:'iubit', fu:'iubi'},
+  {inf:'a învăța', es:'aprender', pr:['învăț','înveți','învață','învățăm','învățați','învață'], pp:'învățat', fu:'învăța'},
+  {inf:'a se numi', es:'llamarse', pr:['mă numesc','te numești','se numește','ne numim','vă numiți','se numesc'], pp:null, fu:null}
+];
+const PERS = ['eu','tu','el / ea','noi','voi','ei / ele'];
+const AUX_PC = ['am','ai','a','am','ați','au'];
+const AUX_FU = ['voi','vei','va','vom','veți','vor'];
+
+const PHRASES = [
+  ['Te iubesc.','Te quiero.'],['Mi-e dor de tine.','Te echo de menos.'],['Ce mai faci?','¿Qué tal te va?'],
+  ['Nu-i nimic.','No pasa nada.'],['Hai să mergem!','¡Vamos!'],['Sănătate!','¡Salud! (al estornudar o despedirse)'],
+  ['Cu drag.','Con cariño.'],['Las-o baltă!','¡Déjalo estar!'],['Doamne ajută!','¡Que Dios ayude! (para desear suerte)'],
+  ['Pe curând!','¡Hasta pronto!'],['Nu știu.','No lo sé.'],['Poți să repeți, te rog?','¿Puedes repetirlo, por favor?'],
+  ['Vorbește mai rar, te rog.','Habla más despacio, por favor.'],['Ce înseamnă…?','¿Qué significa…?']
+];
+
+/* ====== CASA BILINGVĂ · reparto, escenas, frases para Rafa ====== */
+const CAST = {
+  rux:{name:'Ruxandra', role:'tu mujer', persona:'Ruxandra, José Antonio\'s Romanian wife. Warm, playful and patient; she teases him a little and is proud of his effort. She speaks to him with "tu" and sometimes calls him "dragul meu".'},
+  gab:{name:'Gabriela', role:'tu suegra', persona:'Gabriela, José Antonio\'s Romanian mother-in-law (Ruxandra\'s mother). Affectionate, talkative, loves feeding people and always asks about her grandson Rafa. At first he should address her formally (dumneavoastră); if he does it well she may tell him he can use "tu".'},
+  mar:{name:'Marius', role:'tu suegro', persona:'Marius, José Antonio\'s Romanian father-in-law (Ruxandra\'s father). Friendly but a man of few words, dry sense of humour, likes football, likes offering țuică and making toasts.'}
+};
+
+const SCENES = [
+  {id:'s1', who:'rux', unit:'u1', t:'La primera cita', d:'Ruxandra juega a que os acabáis de conocer. Preséntate: nombre, dónde vives, tu familia.', goal:'introduce himself: his name, where he lives, his son Rafa and his age', open:'Bună! Eu sunt Ruxandra. Tu cum te numești?', open_es:'¡Hola! Soy Ruxandra. ¿Tú cómo te llamas?'},
+  {id:'s2', who:'gab', unit:'u2', t:'Gabriela llama por teléfono', d:'Tu suegra llama. Salúdala con respeto (dumneavoastră), cuéntale qué tal estáis y despídete bien.', goal:'greet her politely using dumneavoastră, say how everyone is (including Rafa) and say goodbye properly', open:'Alo? Bună seara! Ce mai faceți acolo?', open_es:'¿Diga? ¡Buenas noches! ¿Qué tal estáis por ahí?'},
+  {id:'s3', who:'mar', unit:'u3', t:'A la mesa con Marius', d:'Comida en casa de tus suegros. Marius te ofrece de comer y de beber. Acepta o rechaza, di qué te gusta y brinda.', goal:'accept or refuse food and drink, say what he likes, compliment the food and make a toast', open:'Hai la masă! Vrei o țuică înainte de ciorbă?', open_es:'¡A la mesa! ¿Quieres una țuică antes de la sopa?'},
+  {id:'s4', who:'rux', unit:'u4', t:'Un día cualquiera', d:'Ruxandra te pregunta por tu rutina: a qué hora te levantas, adónde vas, qué haces en casa.', goal:'describe his daily routine with times and places in the house', open:'La ce oră te trezești mâine?', open_es:'¿A qué hora te levantas mañana?'},
+  {id:'s5', who:'gab', unit:'u5', t:'¿Qué hicisteis el finde?', d:'Gabriela quiere saber todo lo que hicisteis el fin de semana. Cuéntale al menos 3 cosas en pasado.', goal:'tell her three or more things they did, using the perfect compus', open:'Ce ați făcut în weekend? Rafa s-a jucat afară?', open_es:'¿Qué hicisteis el fin de semana? ¿Rafa jugó fuera?'},
+  {id:'s6', who:'mar', unit:'u6', t:'Planes para el verano', d:'Marius os invita a Rumanía. Cerrad planes: cuándo vendréis, cuánto tiempo y qué haréis.', goal:'make future plans: when they will come, for how long and what they will do', open:'Când veniți în România? Vara asta?', open_es:'¿Cuándo venís a Rumanía? ¿Este verano?'}
+];
+
+const FREE_OPEN = {
+  rux:['Ce faci, dragul meu?','¿Qué tal, cariño?'],
+  gab:['Bună, dragule! Ce mai face Rafa?','¡Hola, cariño! ¿Qué tal está Rafa?'],
+  mar:['Salut! Ce mai e nou?','¡Hola! ¿Qué hay de nuevo?']
+};
+
+const RAFA = [
+  ['Hai la masă!','¡A la mesa!'],['E timpul de baie.','Es hora del baño.'],['Hai la culcare!','¡A dormir!'],
+  ['Somn ușor, puiule!','¡Que duermas bien, cariño!'],['Te iubesc, puiul meu.','Te quiero, mi pequeño.'],['Spală-te pe mâini!','¡Lávate las manos!'],
+  ['Vrei apă?','¿Quieres agua?'],['Hai să ne jucăm!','¡Vamos a jugar!'],['Unde e mingea?','¿Dónde está la pelota?'],
+  ['Bravo, Rafa!','¡Muy bien, Rafa!'],['Ai grijă!','¡Cuidado!'],['Nu atinge! E fierbinte.','¡No toques! Quema.'],
+  ['Pune-ți pantofii.','Ponte los zapatos.'],['Hai afară!','¡Vamos fuera!'],['Mai vrei?','¿Quieres más?'],
+  ['Gata!','¡Ya está!'],['Hai să citim o carte.','Vamos a leer un libro.'],['Ce face cățelul? Ham-ham!','¿Qué hace el perrito? ¡Guau, guau!'],
+  ['Dă-mi un pupic!','¡Dame un besito!'],['Unde e mama?','¿Dónde está mamá?'],['Ți-e foame?','¿Tienes hambre?'],
+  ['Ți-e somn?','¿Tienes sueño?'],['Hai să strângem jucăriile.','Vamos a recoger los juguetes.'],['Încet, încet.','Despacio, despacio.'],
+  ['Ce frumos!','¡Qué bonito!'],['Schimbăm scutecul.','Cambiamos el pañal.'],['Sus! Jos!','¡Arriba! ¡Abajo!'],
+  ['Mulțumesc, Rafa!','¡Gracias, Rafa!'],['Ce culoare are?','¿De qué color es?'],['Unu, doi, trei!','¡Uno, dos, tres!'],
+  ['Hai în brațe!','¡Ven a brazos!'],['Te-ai lovit?','¿Te has hecho daño?'],['Nu plânge, puiule.','No llores, cariño.'],
+  ['Bună dimineața, puiule!','¡Buenos días, cariño!'],['Hai să mergem la bunici!','¡Vamos a casa de los abuelos!']
+];
+
+const RETO_IDEAS = [
+  'Spune-mi ce ai făcut azi, în 3 propoziții.',
+  'Descrie-l pe Rafa: cum este, ce îi place?',
+  'Ce vrei să mâncăm mâine? De ce?',
+  'Cum se numesc părinții mei și unde locuiesc?',
+  'Scrie-mi un mesaj frumos, ca pentru o felicitare.',
+  'Ce o să facem în weekend?',
+  'Povestește-mi despre munca ta.',
+  'Ce ți-a plăcut cel mai mult în România?'
+];
+
+const RANKS = [
+  [0,'Străin','Un extraño'],[150,'Musafir','El invitado'],[400,'Ginere începător','Yerno principiante'],
+  [800,'Ginere de nădejde','Yerno de confianza'],[1400,'Vorbăreț','El que ya habla'],[2200,'De-al casei','Uno de la casa'],
+  [3200,'Aproape român','Casi rumano'],[4500,'Român de onoare','Rumano de honor']
+];
+
+const ACH = [
+  ['primul','🌱','Primer paso','Completa tu primera lección'],
+  ['s3','🔥','En racha','3 días seguidos'],
+  ['s7','🔥','Una semana','7 días seguidos'],
+  ['s30','🏔️','Un mes entero','30 días seguidos'],
+  ['zi','🌟','Día perfecto','Completa todo el plan del día'],
+  ['perfect','💎','Sin fallos','Una lección con 3 estrellas'],
+  ['scena1','💬','Primera charla','Termina tu primera escena'],
+  ['scena3','🎭','Gran actuación','3 estrellas en una escena'],
+  ['scenele','🎬','Toda la familia','Termina las 6 escenas'],
+  ['socri','🤝','Aprobado por los suegros','Confianza de Gabriela y Marius al 50 %'],
+  ['jurnal5','📔','Diario en marcha','5 entradas en el diario'],
+  ['rux5','❤️','La jueza sonríe','Ruxandra aprueba 5 retos'],
+  ['rafa10','🧸','Papá bilingüe','10 frases dichas a Rafa'],
+  ['verbe50','🏋️','Verbos de hierro','50 conjugaciones correctas'],
+  ['vocab50','🧠','Memoria rumana','50 palabras dominadas'],
+  ['xp500','⭐','500 XP','Suma 500 puntos'],
+  ['xp2000','🏅','2000 XP','Suma 2000 puntos'],
+  ['fase1','🗺️','Fase 1 superada','Completa las 7 etapas del camino']
+];
+
+const LAND = {u0:['🏛️','Ateneul Român'], u1:['🏰','Castelul Bran'], u2:['👀','Casele cu ochi'], u3:['🕰️','Turnul cu Ceas'], u4:['⛪','Biserica Sf. Mihail'], u5:['🎭','Teatrul Național'], u6:['🌊','Cazinoul din Constanța']};
+
+const OBICEIURI = [
+  ['🎀','Mărțișor','El 1 de marzo se regala un cordón rojo y blanco para recibir la primavera.'],
+  ['🎄','Colindatul','En Navidad, grupos de niños y jóvenes cantan colinde de casa en casa.'],
+  ['🥚','Ouă încondeiate','Huevos de Pascua pintados a mano con cera, típicos de Bucovina.'],
+  ['👚','Ia','La blusa tradicional bordada. El 24 de junio se celebra el Día de la Ia.'],
+  ['🥂','Noroc!','Al brindar se mira a los ojos y se dice «Noroc!» o «Sănătate!».'],
+  ['🥬','Sarmale','Rollitos de col rellenos de carne. En la mesa de Navidad no pueden faltar.'],
+  ['🏰','Castelul Bran','El castillo cerca de Brașov que se asocia a la leyenda de Drácula.'],
+  ['🚪','Porțile maramureșene','Grandes puertas de madera tallada a mano en Maramureș.'],
+  ['🐐','Capra','En Año Nuevo, en Moldavia, una «cabra» enmascarada baila por las calles.'],
+  ['💐','Dragobete','El 24 de febrero, el día de los enamorados a la rumana.'],
+  ['⛪','Mănăstirile pictate','Los monasterios de Bucovina, pintados por fuera, con el famoso azul de Voroneț.'],
+  ['🎶','Doina','Canto tradicional melancólico, Patrimonio Inmaterial de la UNESCO.'],
+  ['🍞','Cozonac','Bizcocho dulce con nueces y cacao que se hornea en Navidad y en Pascua.'],
+  ['🇷🇴','1 Decembrie','El 1 de diciembre es el Día Nacional de Rumanía.'],
+  ['🦩','Delta Dunării','El delta del Danubio, uno de los grandes paraísos de aves de Europa.'],
+  ['🥃','Țuica','Aguardiente de ciruela que el suegro siempre ofrece «para abrir el apetito».'],
+  ['🌽','Mămăliga','Polenta de maíz, el acompañamiento de toda la vida, con queso y nata.'],
+  ['🕯️','Paștele','La Pascua ortodoxa: a medianoche se dice «Hristos a înviat!» y se responde «Adevărat a înviat!».']
+];
+
+/* ====== CASA BILINGVĂ · motor de la app ====== */
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const pad = n => String(n).padStart(2,'0');
+const dstr = d => d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+const today = () => dstr(new Date());
+const addDays = (s,n) => { const d=new Date(s+'T12:00:00'); d.setDate(d.getDate()+n); return dstr(d); };
+const dayDiff = (a,b) => Math.round((Date.parse(b+'T12:00:00')-Date.parse(a+'T12:00:00'))/864e5);
+const shuffle = a => { a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; };
+const pick = a => a[Math.floor(Math.random()*a.length)];
+const fold = s => s.normalize('NFD').replace(/[̀-ͯ]/g,'');
+const clean = s => String(s).toLowerCase().replace(/ş/g,'ș').replace(/ţ/g,'ț').replace(/[.,!?¿¡;:«»"“”()…]/g,' ').replace(/\s+/g,' ').trim();
+function judge(input, answers){
+  const c = clean(input); if(!c) return 'no';
+  if(answers.some(a => clean(a)===c)) return 'exact';
+  if(answers.some(a => fold(clean(a))===fold(c))) return 'loose';
+  return 'no';
+}
+const IC = {
+  spk:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/><path d="M19 6a8.5 8.5 0 0 1 0 12"/></svg>',
+  home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>',
+  map:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg>',
+  chat:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>',
+  gym:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 7v10M3 9v6M18 7v10M21 9v6M6 12h12"/></svg>',
+  me:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>',
+  book:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M4 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H4z"/><path d="M20 4h-4a3 3 0 0 0-3 3"/></svg>',
+  gavel:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M14 4l6 6M11 7l6 6M12.5 5.5l-5 5M4 20l7-7M3 21h8"/></svg>',
+  send:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
+};
+
+/* ---------- estado ---------- */
+const DEF = () => ({v:2, xp:0, days:{}, streak:0, best:0, last:null, units:{}, seen:{}, srs:{}, errs:{}, myErrs:[],
+  verbs:{ok:0,n:0}, ach:{}, rafa:{}, rafaN:0, scenes:{}, rel:{rux:0,gab:0,mar:0}, credited:{}, extra:[], diaryN:0,
+  local:{retos:[], diario:[]}, updatedAt:0});
+let P = DEF();
+const S = {db:null, sample:null, progRef:null, retos:[], diario:[], online:false, booted:false};
+function lsGet(k){ try{ return localStorage.getItem('cb_'+k); }catch(e){ return null; } }
+function lsSet(k,v){ try{ localStorage.setItem('cb_'+k,v); }catch(e){} }
+let ROLE = lsGet('role');
+let SND = lsGet('snd') !== '0';
+function loadLocal(){ const s=lsGet('P'); if(s){ try{ P=Object.assign(DEF(), JSON.parse(s)); }catch(e){} } }
+let saveT=null, saving=false, dirty=false;
+function save(){
+  P.updatedAt = Date.now(); lsSet('P', JSON.stringify(P));
+  if(S.progRef && ROLE==='eu'){ dirty=true; clearTimeout(saveT); saveT=setTimeout(flush,1500); }
+}
+async function flush(){
+  if(saving){ saveT=setTimeout(flush,800); return; }
+  if(!dirty) return; dirty=false; saving=true;
+  try{ await S.progRef.set({s:JSON.stringify(P), at:P.updatedAt}); }catch(e){ console.warn('save',e); }
+  saving=false;
+}
+const retos = () => S.db ? S.retos : P.local.retos;
+const diario = () => S.db ? S.diario : P.local.diario;
+async function addDoc(col, o){
+  o.at = Date.now();
+  if(S.db){ try{ await S.db.collection(col).add(o); }catch(e){ toast('No se pudo guardar. Revisa la conexión.'); } }
+  else { o.id='l'+Date.now()+Math.random().toString(36).slice(2,6); P.local[col].unshift(o); save(); afterChange(); }
+}
+async function updDoc(col, id, patch){
+  if(S.db){ try{ await S.db.collection(col).doc(id).update(patch); }catch(e){ toast('No se pudo guardar. Revisa la conexión.'); } }
+  else { const r=P.local[col].find(x=>x.id===id); if(r) Object.assign(r,patch); save(); afterChange(); }
+}
+function afterChange(){ creditRetos(); softRender(); }
+
+/* ---------- progreso, XP, racha ---------- */
+function dayRec(){ const d=today(); return P.days[d] || (P.days[d]={xp:0,min:0,done:{}}); }
+function addXP(n){ if(ROLE!=='eu') return; P.xp+=n; dayRec().xp+=n; touchStreak(); checkAch(); save(); updHeader(); }
+function touchStreak(){ const t=today(); if(P.last===t) return; P.streak = (P.last && dayDiff(P.last,t)===1) ? P.streak+1 : 1; P.last=t; P.best=Math.max(P.best,P.streak); }
+function liveStreak(){ return (P.last && dayDiff(P.last,today())<=1) ? P.streak : 0; }
+let lastAct=0;
+function activity(){ const n=Date.now(); if(lastAct && ROLE==='eu'){ const r=dayRec(); r.min=(r.min||0)+Math.min(n-lastAct,60000)/60000; } lastAct=n; }
+function markDone(k){ const r=dayRec(); r.done=r.done||{}; if(r.done[k]) return; r.done[k]=1; save();
+  if(PLAN_KEYS.every(x=>r.done[x]) && !r.done.perfect){ r.done.perfect=1; addXP(30); unlock('zi'); confetti(); toast('🌟 ¡Zi perfectă! +30 XP'); } }
+const PLAN_KEYS=['lec','scena','rafa','jurnal','voc'];
+function rank(xp=P.xp){ let r=RANKS[0], nx=null; for(let i=0;i<RANKS.length;i++){ if(xp>=RANKS[i][0]){ r=RANKS[i]; nx=RANKS[i+1]||null; } } return {r, nx}; }
+function unitIdx(id){ return UNITS.findIndex(u=>u.id===id); }
+function unlocked(id){ const i=unitIdx(id); return i<=0 || !!(P.units[UNITS[i-1].id]?.done); }
+function nextUnit(){ return UNITS.find(u=>!P.units[u.id]?.done && unlocked(u.id)) || null; }
+function level(){ const n=UNITS.filter(u=>P.units[u.id]?.done).length; return n<=2?'A1 (beginner)':n<=6?'A1-A2 (elementary)':'A2-B1 (pre-intermediate)'; }
+function unlock(id){ if(P.ach[id]) return; P.ach[id]=today(); const a=ACH.find(x=>x[0]===id); if(a) setTimeout(()=>toast(a[1]+' Logro: '+a[2]),600); save(); }
+function checkAch(){
+  if(Object.values(P.units).some(u=>u.done)) unlock('primul');
+  if(P.streak>=3) unlock('s3'); if(P.streak>=7) unlock('s7'); if(P.streak>=30) unlock('s30');
+  if(Object.values(P.units).some(u=>u.stars===3)) unlock('perfect');
+  const sc=Object.values(P.scenes); if(sc.length) unlock('scena1'); if(sc.some(s=>s.best===3)) unlock('scena3');
+  if(SCENES.every(s=>P.scenes[s.id])) unlock('scenele');
+  if(P.rel.gab>=50 && P.rel.mar>=50) unlock('socri');
+  if(P.diaryN>=5) unlock('jurnal5');
+  if(Object.keys(P.credited).length>=5) unlock('rux5');
+  if(P.rafaN>=10) unlock('rafa10');
+  if(P.verbs.ok>=50) unlock('verbe50');
+  if(Object.values(P.srs).filter(c=>c.b>=3).length>=50) unlock('vocab50');
+  if(P.xp>=500) unlock('xp500'); if(P.xp>=2000) unlock('xp2000');
+  if(UNITS.every(u=>P.units[u.id]?.done)) unlock('fase1');
+}
+function creditRetos(){
+  if(ROLE!=='eu') return;
+  let changed=false;
+  for(const r of retos()){
+    if(r.status==='ok' && !P.credited[r.id]){
+      P.credited[r.id]=1; changed=true;
+      const xp = r.kind==='vida' ? 30 : 15+10*(r.stars||1);
+      P.rel.rux=Math.min(100,(P.rel.rux||0)+6+2*(r.stars||1));
+      P.xp+=xp; dayRec().xp+=xp; touchStreak();
+      toast('❤️ Ruxandra ha aprobado un reto · +'+xp+' XP');
+    }
+  }
+  if(changed){ checkAch(); save(); updHeader(); }
+}
+
+/* ---------- voz y sonido ---------- */
+let roVoice=null;
+function findVoice(){ try{ const v=speechSynthesis.getVoices(); roVoice=v.find(x=>/^ro/i.test(x.lang))||null; }catch(e){} }
+try{ speechSynthesis.onvoiceschanged=findVoice; findVoice(); }catch(e){}
+function speak(t, slow){
+  const txt=String(t).replace(/___/g,'…');
+  const TTS = window.Capacitor?.Plugins?.TextToSpeech;
+  if(TTS){ TTS.speak({text:txt, lang:'ro-RO', rate: slow?0.6:0.9}).catch(()=>{}); return; }
+  try{ speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(txt); u.lang='ro-RO'; if(roVoice) u.voice=roVoice; u.rate=slow?0.6:0.92; speechSynthesis.speak(u); }catch(e){}
+}
+let actx=null;
+function beep(ok){
+  if(!SND) return;
+  try{ actx=actx||new (window.AudioContext||window.webkitAudioContext)(); const t=actx.currentTime;
+    const notes = ok ? [660,880] : [220,180];
+    notes.forEach((f,i)=>{ const o=actx.createOscillator(), g=actx.createGain(); o.type= ok?'triangle':'sawtooth'; o.frequency.value=f;
+      g.gain.setValueAtTime(0.0001,t+i*0.11); g.gain.exponentialRampToValueAtTime(ok?0.18:0.08,t+i*0.11+0.02); g.gain.exponentialRampToValueAtTime(0.0001,t+i*0.11+0.16);
+      o.connect(g).connect(actx.destination); o.start(t+i*0.11); o.stop(t+i*0.11+0.18); });
+  }catch(e){}
+}
+document.addEventListener('click', e=>{ const b=e.target.closest('[data-say]'); if(b){ e.stopPropagation(); speak(b.dataset.say, b.dataset.slow==='1'); } }, true);
+const spk = (t, cls='speak') => `<button class="${cls}" data-say="${esc(t)}" aria-label="Escuchar">${IC.spk}</button>`;
+
+/* ---------- UI general ---------- */
+function toast(msg){ const t=document.createElement('div'); t.className='toast'; t.textContent=msg; document.body.appendChild(t); setTimeout(()=>t.remove(),2600); }
+function updHeader(){
+  const s=liveStreak(), act=P.last===today();
+  const hs=$('#hStreak'), hx=$('#hXp');
+  if(ROLE==='rux'){ hs.className='chip'; hs.textContent='⚖️ Jueza'; hx.textContent='⭐ '+P.xp; return; }
+  hs.className='chip fire'+(act?'':' off'); hs.textContent='🔥 '+s; hs.title=act?'Racha de días':'Haz algo hoy para mantener la racha';
+  hx.textContent='⭐ '+P.xp;
+}
+let TAB = 'azi';
+const TABS_EU=[['azi','Hoy',IC.home],['drum','Camino',IC.map],['familia','Familia',IC.chat],['exersa','Practicar',IC.gym],['eu','Yo',IC.me]];
+const TABS_RUX=[['retos','Retos',IC.gavel],['diario','Diario',IC.book],['progreso','Progreso',IC.map],['eu','Ajustes',IC.me]];
+function renderTabs(){
+  const t = ROLE==='rux'?TABS_RUX:TABS_EU;
+  if(!t.some(x=>x[0]===TAB)) TAB=t[0][0];
+  const nav=$('#tabs'); nav.style.gridTemplateColumns=`repeat(${t.length},1fr)`;
+  nav.innerHTML=t.map(([k,l,i])=>`<button data-tab="${k}" aria-current="${k===TAB}">${i}<span>${l}</span></button>`).join('');
+}
+$('#tabs').addEventListener('click', e=>{ const b=e.target.closest('[data-tab]'); if(!b) return; TAB=b.dataset.tab; render(); scrollTo(0,0); });
+let pendingRender=false;
+function softRender(){
+  const a=document.activeElement;
+  if(a && $('#view').contains(a) && /TEXTAREA|INPUT/.test(a.tagName) && a.value){ if(!pendingRender){ pendingRender=true; a.addEventListener('blur',()=>{pendingRender=false; render();},{once:true}); } return; }
+  render();
+}
+function render(){
+  if(!ROLE){ rolePicker(); return; }
+  updHeader(); renderTabs();
+  const V={azi:vAzi, drum:vDrum, familia:vFamilia, exersa:vExersa, eu:vEu, retos:vJRetos, diario:vJDiario, progreso:vJProgreso}[TAB];
+  $('#view').innerHTML = V();
+  bindView();
+}
+const stars = n => `<span class="stars" aria-label="${n} estrellas">${'★'.repeat(n)}<span class="e">${'★'.repeat(3-n)}</span></span>`;
+function sheet(html, cls=''){ const L=$('#layer'); L.innerHTML=`<div class="sheet ${cls}" role="dialog" aria-modal="true">${html}</div>`; document.body.style.overflow='hidden'; return L.firstChild; }
+function closeSheet(){ $('#layer').innerHTML=''; document.body.style.overflow=''; try{speechSynthesis.cancel();}catch(e){} render(); }
+
+/* ---------- elección de rol ---------- */
+function rolePicker(){
+  $('#tabs').innerHTML=''; updHeaderBare();
+  $('#view').innerHTML=`<div class="stack" style="padding-top:24px">
+    <div class="hello">Bun venit în<br><span style="color:var(--red)">Casa Bilingvă</span></div>
+    <p class="muted">Aprende rumano con tu propia familia: escenas con Ruxandra, Gabriela y Marius, un diario corregido, frases para Rafa y retos que valida una nativa.</p>
+    <div class="label">¿Quién abre la app en este móvil?</div>
+    <button class="card item" data-role="eu"><span class="av me lg">J</span><span class="grow"><h3>José Antonio</h3><span class="muted small">Aprendo rumano</span></span></button>
+    <button class="card item" data-role="rux"><span class="av rux lg">R</span><span class="grow"><h3>Ruxandra</h3><span class="muted small">Soy la jueza: pongo retos y califico</span></span></button>
+  </div>`;
+  $('#view').querySelectorAll('[data-role]').forEach(b=>b.onclick=()=>{ ROLE=b.dataset.role; lsSet('role',ROLE); TAB= ROLE==='rux'?'retos':'azi'; render(); });
+}
+function updHeaderBare(){ $('#hStreak').textContent='🔥 0'; $('#hXp').textContent='⭐ 0'; }
+
+/* ---------- vistas del alumno ---------- */
+function rafaToday(){ const n=Math.floor(Date.parse(today()+'T12:00:00')/864e5); return RAFA[n % RAFA.length]; }
+function heroSVG(){
+  const firs=[[20,128],[42,124],[64,130],[108,122],[150,128],[350,124],[372,130],[392,126]].map(([x,y])=>`<polygon points="${x},${y-22} ${x-8},${y} ${x+8},${y}" style="fill:var(--fir)"/>`).join('');
+  return `<svg viewBox="0 0 400 150" role="img" aria-label="Paisaje de los Cárpatos con un castillo"><defs><linearGradient id="skyg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--sky1)"/><stop offset="1" style="stop-color:var(--sky2)"/></linearGradient></defs>
+  <rect width="400" height="150" fill="url(#skyg)"/><circle cx="362" cy="64" r="18" style="fill:var(--yellow)"/>
+  <path d="M0 112 L36 74 L70 96 L118 48 L160 88 L205 62 L240 92 L290 56 L340 90 L400 66 V150 H0Z" style="fill:var(--mtn1)"/>
+  <path d="M118 48 L108 58 L118 55 L128 58Z M290 56 L281 65 L290 62 L299 65Z" style="fill:var(--wall)"/>
+  <path d="M0 132 Q70 104 150 124 T300 112 T400 120 V150 H0Z" style="fill:var(--hill)"/>
+  <g transform="translate(232 70)"><rect x="8" y="24" width="44" height="30" style="fill:var(--wall)"/><rect x="0" y="16" width="14" height="38" style="fill:var(--wall)"/><rect x="44" y="8" width="13" height="46" style="fill:var(--wall)"/>
+  <polygon points="-2,16 7,0 16,16" fill="#CE1126"/><polygon points="42,8 50.5,-12 59,8" fill="#CE1126"/><polygon points="12,24 30,12 46,24" fill="#CE1126"/>
+  <rect x="5" y="26" width="4" height="7" fill="#101C45"/><rect x="49" y="20" width="4" height="7" fill="#101C45"/><rect x="26" y="40" width="8" height="14" rx="4" fill="#101C45"/></g>
+  ${firs}<rect x="0" y="146" width="133.4" height="4" fill="#002B7F"/><rect x="133.4" y="146" width="133.3" height="4" fill="#FCD116"/><rect x="266.7" y="146" width="133.3" height="4" fill="#CE1126"/></svg>`;
+}
+function obiceiToday(){ const n=Math.floor(Date.parse(today()+'T12:00:00')/864e5); return OBICEIURI[(n*7) % OBICEIURI.length]; }
+function vAzi(){
+  const r=dayRec(), done=r.done||{}, min=Math.min(30,Math.round(r.min||0)), {r:rk,nx}=rank();
+  const nu=nextUnit(), sc=SCENES.find(s=>unlocked(s.unit) && !P.scenes[s.id]) || SCENES.filter(s=>unlocked(s.unit)).slice(-1)[0];
+  const pend=retos().filter(x=>x.kind!=='vida' && x.status==='pending').length;
+  const due=dueCards().length;
+  const plan=[
+    ['lec', nu?`Camino: ${nu.city}`:'Repasa una lección', nu?nu.title:'Mejora tus estrellas', 'lec'],
+    ['scena', 'Escena con la familia', sc?`${CAST[sc.who].name}: ${sc.t}`:'Conversación libre', 'scena'],
+    ['rafa', 'Frase para Rafa', 'Dísela hoy de verdad', 'rafa'],
+    ['jurnal', 'Diario: 3 frases', 'Te las corrijo al momento', 'jurnal'],
+    ['voc', 'Repaso de vocabulario', due?`${due} tarjetas pendientes`:'Tarjetas nuevas', 'voc']
+  ];
+  const [rro,res]=rafaToday();
+  const progressRank = nx ? Math.round((P.xp-rk[0])/(nx[0]-rk[0])*100) : 100;
+  return `<div class="stack">
+    <div class="hero">${heroSVG()}<div class="cap"><div class="hello">Bună, José Antonio!</div><div class="small">${['Duminică','Luni','Marți','Miercuri','Joi','Vineri','Sâmbătă'][new Date().getDay()]} · ${esc(rk[1])} (${esc(rk[2])})</div></div></div>
+    <section class="card goal" aria-label="Meta de hoy">
+      <div class="ring" style="--p:${min/30*100}"><div><b>${min}</b><small>de 30 min</small></div></div>
+      <div class="stack" style="gap:6px">
+        <div class="label">Rango siguiente${nx?': '+esc(nx[1]):''}</div>
+        <div class="bar"><i style="width:${progressRank}%"></i></div>
+        <div class="small muted">${nx?`${nx[0]-P.xp} XP para «${esc(nx[2])}»`:'Rango máximo de la fase'} · hoy +${r.xp||0} XP</div>
+      </div>
+    </section>
+    ${pend?`<button class="card item" data-go="retos"><span class="av rux">R</span><span class="grow"><b>Ruxandra te ha puesto ${pend} reto${pend>1?'s':''}</b><br><span class="small muted">Contéstale en rumano</span></span><span class="go">›</span></button>`:''}
+    <section class="card"><div class="label" style="margin-bottom:4px">Plan de hoy · ${PLAN_KEYS.filter(k=>done[k]).length}/5</div>
+      <div class="plan">${plan.map(([k,t,s,a])=>`<button class="${done[k]?'on':''}" data-plan="${a}"><span class="tick">${done[k]?'✓':''}</span><span><span class="pt">${esc(t)}</span><span class="ps">${esc(s)}</span></span><span class="go">›</span></button>`).join('')}</div>
+    </section>
+    <section class="card rafa stack" style="gap:8px">
+      <div class="row" style="justify-content:space-between"><span class="label">Frase para Rafa</span>${spk(rro)}</div>
+      <div class="ro">${esc(rro)}</div><div>${esc(res)}</div>
+      ${P.rafa[today()]?'<div><b>✓ Ya se la has dicho hoy</b></div>':'<button class="btn ghost" id="rafaDone">Se la he dicho · +5 XP</button>'}
+    </section>
+    <section class="card obicei">${(o=>`<span class="em" aria-hidden="true">${o[0]}</span><div><div class="label">Costumbre del día</div><b>${esc(o[1])}</b><div class="small muted">${esc(o[2])}</div></div>`)(obiceiToday())}</section>
+    <section class="card stack"><div class="label">Confianza de la familia</div>${castRow()}</section>
+  </div>`;
+}
+function castRow(){ return `<div class="cast">${Object.entries(CAST).map(([k,c])=>`<div class="card" style="border:0;padding:4px"><span class="av ${k}">${c.name[0]}</span><b>${c.name}</b><span class="small muted">${c.role}</span><div class="meter"><i style="width:${P.rel[k]||0}%"></i></div><span class="small muted">${P.rel[k]||0} %</span></div>`).join('')}</div>`; }
+
+function vDrum(){
+  const nu=nextUnit();
+  return `<div class="stack">
+    <div><div class="label">Fase 1 · A1 → A2</div><h2 style="font-size:28px">El camino por Rumanía</h2><p class="muted small" style="margin:4px 0 0">Siete etapas de Bucarest al mar Negro. Cada una desbloquea su escena con la familia.</p></div>
+    <div class="route">${UNITS.map(u=>{ const st=P.units[u.id], lk=!unlocked(u.id), cls=st?.done?'done':lk?'lock':(nu&&nu.id===u.id?'next':'');
+      return `<div class="node ${cls}"><button data-unit="${u.id}" ${lk?'aria-disabled="true"':''}><span class="disc">${lk?'🔒':LAND[u.id][0]}</span><span class="city">${esc(u.city)}</span><span class="land">${esc(LAND[u.id][1])}</span><span class="ut">${esc(u.title)}</span>${stars(st?.stars||0)}</button></div>`; }).join('')}</div>
+    <div class="emoji-row" aria-hidden="true">🎀 🥚 👚 🎄 🥬 🍞</div>
+    ${FUTURE_PHASES.map(f=>`<div class="card future"><div class="label">${esc(f.n)}</div><b>${esc(f.t)}</b><div class="small muted">${esc(f.d)}</div></div>`).join('')}
+  </div>`;
+}
+function vFamilia(){
+  return `<div class="stack">
+    <div><div class="label">Escenas con IA</div><h2 style="font-size:28px">Habla con tu familia</h2><p class="muted small" style="margin:4px 0 0">Escribe en rumano. Te contestan a tu nivel y te corrigen cada frase.</p></div>
+    ${castRow()}
+    <div class="list">${SCENES.map(s=>{ const lk=!unlocked(s.unit), b=P.scenes[s.id]?.best||0;
+      return `<button class="card item" data-scene="${s.id}" ${lk?'aria-disabled="true"':''} style="${lk?'opacity:.55':''}"><span class="av ${s.who}">${CAST[s.who].name[0]}</span><span class="grow"><h3>${esc(s.t)}</h3><span class="small muted">${lk?'Se desbloquea en '+esc(UNITS[unitIdx(s.unit)].city):esc(CAST[s.who].name+' · '+CAST[s.who].role)}</span></span>${lk?'<span class="pill lock">🔒</span>':stars(b)}</button>`; }).join('')}</div>
+    <div class="card stack"><div class="label">Conversación libre</div><div class="small muted">Charla de lo que quieras, sin guion.</div>
+      <div class="row">${Object.entries(CAST).map(([k,c])=>`<button class="btn ghost" style="flex:1;padding:10px 6px" data-free="${k}">${c.name}</button>`).join('')}</div></div>
+  </div>`;
+}
+function vExersa(){
+  const boxes=[1,2,3,4,5].map(b=>Object.values(P.srs).filter(c=>c.b===b).length);
+  const nErr=Object.keys(P.errs).length+P.myErrs.length;
+  return `<div class="stack">
+    <div><div class="label">Gimnasio</div><h2 style="font-size:28px">Practicar</h2></div>
+    <button class="card item" id="goVoc"><span class="av mar">V</span><span class="grow"><h3>Vocabulario</h3><span class="small muted">${dueCards().length} para hoy · repaso espaciado</span></span><span class="go">›</span></button>
+    <div class="boxes">${boxes.map((n,i)=>`<div>${n}<small>caja ${i+1}</small></div>`).join('')}</div>
+    <button class="card item" id="goVerb"><span class="av gab">C</span><span class="grow"><h3>Conjugación</h3><span class="small muted">${VERBS.length} verbos · ${P.verbs.ok} aciertos</span></span><span class="go">›</span></button>
+    <button class="card item" id="goErr" ${nErr?'':'aria-disabled="true" style="opacity:.55"'}><span class="av rux">!</span><span class="grow"><h3>Mis errores</h3><span class="small muted">${nErr?nErr+' por corregir (de lecciones, escenas y diario)':'Aún no hay errores guardados'}</span></span><span class="go">›</span></button>
+    <button class="card item" id="goJurnal"><span class="av me">D</span><span class="grow"><h3>Diario</h3><span class="small muted">${P.diaryN} entradas</span></span><span class="go">›</span></button>
+  </div>`;
+}
+function vEu(){
+  const {r:rk}=rank(); const days=[]; for(let i=6;i>=0;i--){ const d=addDays(today(),-i); days.push([d,P.days[d]?.xp||0]); }
+  const mx=Math.max(20,...days.map(x=>x[1]));
+  const mins=Math.round(Object.values(P.days).reduce((a,d)=>a+(d.min||0),0));
+  const mastered=Object.values(P.srs).filter(c=>c.b>=3).length;
+  const L=['D','L','Ma','Mi','J','V','S'];
+  return `<div class="stack">
+    ${ROLE==='eu'?`<div class="card stack" style="gap:6px"><div class="label">Tu rango</div><div class="rank">${esc(rk[1])}</div><div class="small muted">${esc(rk[2])} · ${P.xp} XP</div></div>
+    <div class="stats">
+      <div class="card stat"><b>${liveStreak()}</b><span class="small muted">días de racha (récord ${P.best})</span></div>
+      <div class="card stat"><b>${mins}</b><span class="small muted">minutos en total</span></div>
+      <div class="card stat"><b>${mastered}</b><span class="small muted">palabras dominadas</span></div>
+      <div class="card stat"><b>${Object.keys(P.scenes).length}/${SCENES.length}</b><span class="small muted">escenas superadas</span></div>
+    </div>
+    <div class="card"><div class="label" style="margin-bottom:8px">Últimos 7 días (XP)</div><div class="week">${days.map(([d,x])=>`<div class="${d===today()?'today':''}"><i style="height:${Math.round(x/mx*80)}px"></i>${L[new Date(d+'T12:00:00').getDay()]}</div>`).join('')}</div></div>
+    <div><div class="label" style="margin-bottom:8px">Logros · ${Object.keys(P.ach).length}/${ACH.length}</div><div class="achs">${ACH.map(([id,ic,t,d])=>`<div class="card ach ${P.ach[id]?'':'lockd'}"><span class="ic">${ic}</span><h3>${esc(t)}</h3><span class="small muted">${esc(d)}</span></div>`).join('')}</div></div>`:''}
+    <div class="card stack"><div class="label">Ajustes</div>
+      <div class="row"><span class="grow" style="flex:1">Sonidos</span><button class="btn ghost" id="sndT" style="padding:8px 14px">${SND?'Activados':'Desactivados'}</button></div>
+      <div class="row"><span style="flex:1">Voz rumana ${roVoice?'<span class="pill ok">instalada</span>':'<span class="pill wait">no encontrada</span>'}</span>${spk('Bună ziua! Ce mai faci?')}</div>
+      ${roVoice?'':'<div class="small muted">Si suena raro, en Android instala la voz rumana: Ajustes › Sistema › Idiomas › Salida de texto a voz › Motor de Google › Instalar datos de voz › Rumano.</div>'}
+      <div class="row"><span style="flex:1">Este móvil es de <b>${ROLE==='rux'?'Ruxandra':'José Antonio'}</b></span><button class="btn ghost" id="roleT" style="padding:8px 14px">Cambiar</button></div>
+      <div class="small muted">${S.online?'✓ Sincronizado: Ruxandra ve tus retos y tu diario desde su móvil.':'Modo de un solo dispositivo: el progreso se guarda en este móvil. Ábrela desde Claude para sincronizar con Ruxandra.'}</div>
+    </div>
+    ${ROLE==='eu'?`<div class="card stack"><div class="label">Copia de seguridad</div><div class="small muted">Copia el código para guardarlo o pasar tu progreso a otro dispositivo.</div>
+      <textarea class="code" id="bk" aria-label="Código de copia" placeholder="Pega aquí un código para restaurar"></textarea>
+      <div class="row"><button class="btn ghost" id="bkOut" style="flex:1">Copiar código</button><button class="btn ghost" id="bkIn" style="flex:1">Restaurar</button></div></div>`:''}
+  </div>`;
+}
+
+/* ---------- vistas de la jueza ---------- */
+function vJRetos(){
+  const R=retos(); const toGrade=R.filter(r=>r.status==='answered'); const open=R.filter(r=>r.status==='pending'); const doneR=R.filter(r=>r.status==='ok').slice(0,10);
+  return `<div class="stack">
+    <div><div class="hello">Bună, Ruxandra!</div><p class="muted small" style="margin:4px 0 0">Tú decides cuándo José Antonio lo hace bien. Ponle retos en rumano y califica sus respuestas.</p></div>
+    <div class="card stack"><div class="label">Nuevo reto</div>
+      <textarea class="txt" id="newReto" placeholder="Ej.: Spune-mi ce ai făcut azi."></textarea>
+      <div class="chips">${RETO_IDEAS.slice(0,5).map(x=>`<button data-idea="${esc(x)}">${esc(x)}</button>`).join('')}</div>
+      <button class="btn red" id="sendReto">Enviar reto</button></div>
+    <div class="label">Para calificar (${toGrade.length})</div>
+    ${toGrade.length?toGrade.map(r=>gradeCard(r)).join(''):'<div class="card muted small">Nada pendiente. Cuando él responda o marque un reto en casa como hecho, aparecerá aquí.</div>'}
+    ${open.length?`<div class="label">Esperando su respuesta (${open.length})</div>${open.map(r=>`<div class="card small"><b>${esc(r.text)}</b><div class="muted">${r.comment?'Tu nota: '+esc(r.comment):'Sin responder todavía'}</div></div>`).join('')}`:''}
+    ${doneR.length?`<div class="label">Aprobados</div>${doneR.map(r=>`<div class="card small row"><span style="flex:1">${esc(r.text)}</span>${stars(r.stars||0)}</div>`).join('')}`:''}
+  </div>`;
+}
+function gradeCard(r){
+  return `<div class="card stack" data-grade="${r.id}">
+    <div class="small muted">${r.kind==='vida'?'Reto en casa · dice que lo ha hecho':'Tu reto'}</div><b>${esc(r.text)}</b>
+    ${r.kind==='vida'?'':`<div class="bubble" style="background:var(--blue-soft)">${esc(r.answer||'')} ${spk(r.answer||'')}</div>`}
+    <div class="starpick" role="group" aria-label="Estrellas">${[1,2,3].map(n=>`<button data-st="${n}" aria-label="${n} estrellas">★</button>`).join('')}</div>
+    <input class="txt" placeholder="Comentario (opcional), mejor en rumano" data-cm>
+    <div class="row"><button class="btn ok" data-approve style="flex:1">Aprobar</button><button class="btn ghost" data-redo style="flex:1">Repetir</button></div></div>`;
+}
+function vJDiario(){
+  const D=diario();
+  return `<div class="stack"><div><div class="label">Su diario</div><h2 style="font-size:28px">Lo que escribe cada noche</h2></div>
+    ${D.length?D.slice(0,30).map(d=>`<div class="card stack" data-dia="${d.id}"><div class="small muted">${esc(d.date)}</div>
+      <div><span class="label">Escribió</span><div>${esc(d.text)}</div></div>
+      <div><span class="label">Corregido</span><div style="color:var(--ok);font-weight:700">${esc(d.corrected||'')}</div></div>
+      ${d.comment?`<div class="fix"><b>Tú:</b> ${esc(d.comment)}</div>`:`<input class="txt" placeholder="Déjale un comentario" data-dcm><button class="btn ghost" data-dsend>Enviar comentario</button>`}</div>`).join(''):'<div class="card muted small">Todavía no ha escrito en el diario.</div>'}
+  </div>`;
+}
+function vJProgreso(){
+  const {r:rk}=rank(); const done=UNITS.filter(u=>P.units[u.id]?.done).length;
+  return `<div class="stack"><div><div class="label">Cómo va</div><h2 style="font-size:28px">${esc(rk[1])}</h2><div class="muted small">${esc(rk[2])} · ${P.xp} XP</div></div>
+    <div class="stats"><div class="card stat"><b>${liveStreak()}</b><span class="small muted">días de racha</span></div><div class="card stat"><b>${done}/${UNITS.length}</b><span class="small muted">etapas del camino</span></div>
+    <div class="card stat"><b>${Object.keys(P.scenes).length}</b><span class="small muted">escenas superadas</span></div><div class="card stat"><b>${Object.keys(P.credited).length}</b><span class="small muted">retos que le has aprobado</span></div></div>
+    <div class="card stack"><div class="label">La confianza de la familia</div>${castRow()}</div></div>`;
+}
+
+/* ---------- enlaces de eventos ---------- */
+function bindView(){
+  const V=$('#view');
+  V.querySelectorAll('[data-plan]').forEach(b=>b.onclick=()=>{
+    const k=b.dataset.plan;
+    if(k==='lec'){ const u=nextUnit()||UNITS[0]; openUnit(u.id); }
+    else if(k==='scena'){ const s=SCENES.find(s=>unlocked(s.unit)&&!P.scenes[s.id]); s?startScene(s.id):startScene('free:rux'); }
+    else if(k==='rafa'){ document.querySelector('.rafa')?.scrollIntoView({behavior:'smooth',block:'center'}); }
+    else if(k==='jurnal') openJournal();
+    else if(k==='voc') startVocab();
+  });
+  V.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>openRetosEu());
+  const rd=$('#rafaDone'); if(rd) rd.onclick=()=>{ P.rafa[today()]=1; P.rafaN++; addXP(5); markDone('rafa'); beep(true); render(); };
+  V.querySelectorAll('[data-unit]').forEach(b=>b.onclick=()=>{ if(!unlocked(b.dataset.unit)){ toast('Completa la etapa anterior para desbloquearla'); return; } openUnit(b.dataset.unit); });
+  V.querySelectorAll('[data-scene]').forEach(b=>b.onclick=()=>{ const s=SCENES.find(x=>x.id===b.dataset.scene); if(!unlocked(s.unit)){ toast('Se desbloquea al llegar a '+UNITS[unitIdx(s.unit)].city); return; } startScene(s.id); });
+  V.querySelectorAll('[data-free]').forEach(b=>b.onclick=()=>startScene('free:'+b.dataset.free));
+  const on=(id,f)=>{ const e=$(id); if(e) e.onclick=f; };
+  on('#goVoc',startVocab); on('#goVerb',openVerbSetup); on('#goErr',()=>{ if(Object.keys(P.errs).length+P.myErrs.length) startErrors(); }); on('#goJurnal',openJournal);
+  on('#sndT',()=>{ SND=!SND; lsSet('snd',SND?'1':'0'); render(); });
+  on('#roleT',()=>{ ROLE=null; lsSet('role',''); render(); });
+  on('#bkOut',async()=>{ const code=btoa(unescape(encodeURIComponent(JSON.stringify(P)))); const ta=$('#bk'); ta.value=code; try{ await navigator.clipboard.writeText(code); toast('Código copiado'); }catch(e){ ta.select(); toast('Código seleccionado: cópialo'); } });
+  on('#bkIn',()=>{ try{ const o=JSON.parse(decodeURIComponent(escape(atob($('#bk').value.trim())))); if(typeof o.xp!=='number') throw 0; P=Object.assign(DEF(),o); save(); toast('Progreso restaurado'); render(); }catch(e){ toast('Ese código no es válido'); } });
+  // jueza
+  V.querySelectorAll('[data-idea]').forEach(b=>b.onclick=()=>{ $('#newReto').value=b.dataset.idea; });
+  on('#sendReto',async()=>{ const t=$('#newReto').value.trim(); if(!t){ toast('Escribe el reto primero'); return; } $('#newReto').value=''; await addDoc('retos',{kind:'rux',text:t,status:'pending'}); toast('Reto enviado'); });
+  V.querySelectorAll('[data-grade]').forEach(card=>{
+    let st=0; const id=card.dataset.grade;
+    card.querySelectorAll('[data-st]').forEach(b=>b.onclick=()=>{ st=+b.dataset.st; card.querySelectorAll('[data-st]').forEach(x=>x.classList.toggle('on',+x.dataset.st<=st)); });
+    card.querySelector('[data-approve]').onclick=()=>{ if(!st){ toast('Elige de 1 a 3 estrellas'); return; } updDoc('retos',id,{status:'ok',stars:st,comment:card.querySelector('[data-cm]').value.trim(),gradedAt:Date.now()}); toast('Aprobado ✓'); };
+    card.querySelector('[data-redo]').onclick=()=>{ updDoc('retos',id,{status:'pending',comment:card.querySelector('[data-cm]').value.trim()||'Mai încearcă o dată!'}); toast('Le pides que lo repita'); };
+  });
+  V.querySelectorAll('[data-dia]').forEach(card=>{ const b=card.querySelector('[data-dsend]'); if(b) b.onclick=()=>{ const v=card.querySelector('[data-dcm]').value.trim(); if(v) updDoc('diario',card.dataset.dia,{comment:v}); }; });
+}
+
+/* ---------- etapa del camino ---------- */
+function openUnit(id){
+  const u=UNITS[unitIdx(id)], st=P.units[id], vida=retos().find(r=>r.kind==='vida'&&r.unit===id);
+  const vs = vida ? (vida.status==='ok'?'<span class="pill ok">Aprobado por Ruxandra '+'★'.repeat(vida.stars||0)+'</span>':vida.status==='pending'?'<span class="pill redo">Ruxandra pide repetirlo</span>':'<span class="pill wait">Esperando a Ruxandra</span>') : '';
+  const el=sheet(`<div class="wrap stack">
+    <div class="row"><button class="x" data-close aria-label="Cerrar">×</button><span class="label" style="margin-left:auto">Etapa ${unitIdx(id)+1} · ${esc(u.city)}</span></div>
+    <div class="card row" style="gap:14px"><span style="font-size:44px" aria-hidden="true">${LAND[id][0]}</span><div><div class="label">Postal desde ${esc(u.city)}</div><b>${esc(LAND[id][1])}</b></div></div>
+    <div><h2 style="font-size:32px;color:var(--blue)">${esc(u.title)}</h2><div class="muted">${esc(u.sub)}</div>${st?.done?'<div style="margin-top:6px">'+stars(st.stars)+'</div>':''}</div>
+    <div class="row"><button class="btn ghost" style="flex:1" data-th>Teoría</button><button class="btn" style="flex:1.4" data-go-ex>${st?.done?'Repetir lección':'Empezar lección'}</button></div>
+    <div class="card reto stack" style="gap:8px"><div class="label">Reto en casa</div><div>${esc(u.reto)}</div>
+      ${vida && vida.status!=='pending' ? vs : `<button class="btn ghost" data-vida>${vida?'Lo he vuelto a hacer':'Lo he hecho'} · que lo apruebe Ruxandra</button>${vida&&vida.comment?'<div class="small">Ruxandra: '+esc(vida.comment)+'</div>':''}`}</div>
+    <div class="card"><div class="label">Vocabulario (${u.vocab.length})</div><div class="vocab">${u.vocab.map(([r,e])=>`<div>${spk(r)}<b>${esc(r)}</b><span class="muted" style="margin-left:auto;text-align:right">${esc(e)}</span></div>`).join('')}</div></div>
+  </div>`);
+  el.querySelector('[data-close]').onclick=closeSheet;
+  el.querySelector('[data-th]').onclick=()=>openTheory(id,false);
+  el.querySelector('[data-go-ex]').onclick=()=>{ if(!P.seen[id]) openTheory(id,true); else startUnit(id); };
+  const v=el.querySelector('[data-vida]'); if(v) v.onclick=async()=>{ if(vida) await updDoc('retos',vida.id,{status:'answered',answer:'Lo he hecho'}); else await addDoc('retos',{kind:'vida',unit:id,text:u.reto,status:'answered',answer:'Lo he hecho'}); toast('Enviado a Ruxandra'); openUnit(id); };
+}
+function openTheory(id, thenEx){
+  const u=UNITS[unitIdx(id)]; let i=0;
+  const draw=()=>{ const c=u.theory[i];
+    const el=sheet(`<div class="wrap stack theory">
+      <div class="qhead"><button class="x" data-close aria-label="Cerrar">×</button><div class="bar blue"><i style="width:${(i+1)/u.theory.length*100}%"></i></div></div>
+      <div class="label">${esc(u.city)} · teoría ${i+1}/${u.theory.length}</div><h2>${esc(c.h)}</h2>
+      <div class="body tablewrap">${c.b}</div>
+      <div class="examples">${c.ro.map(r=>`<button class="ex-chip" data-say="${esc(r)}">${IC.spk.replace('<svg','<svg width="18" height="18"')} ${esc(r)}</button>`).join('')}</div>
+    </div><div class="footer-action"><div class="in">${i?'<button class="btn ghost" data-prev>Atrás</button>':''}<button class="btn" data-next>${i<u.theory.length-1?'Siguiente':thenEx?'Empezar ejercicios':'Entendido'}</button></div></div>`);
+    el.querySelector('[data-close]').onclick=closeSheet;
+    const pv=el.querySelector('[data-prev]'); if(pv) pv.onclick=()=>{ i--; draw(); };
+    el.querySelector('[data-next]').onclick=()=>{ activity(); if(i<u.theory.length-1){ i++; draw(); } else { P.seen[id]=1; save(); thenEx?startUnit(id):openUnit(id); } };
+  }; draw();
+}
+function startUnit(id){
+  const u=UNITS[unitIdx(id)];
+  runSession(u.ex.map((ex,i)=>({ex,key:id+':'+i})), {title:u.city, unit:id, onEnd:(res)=>{
+    const acc=res.first/res.total, s=acc>=.95?3:acc>=.8?2:1, prev=P.units[id];
+    P.units[id]={done:true, stars:Math.max(s,prev?.stars||0), best:Math.max(acc,prev?.best||0)};
+    addXP(20); markDone('lec'); checkAch(); save();
+    return {stars:s, bonus:20};
+  }});
+}
+
+/* ---------- motor de ejercicios ---------- */
+const PRAISE=[['Bravo!','¡Muy bien!'],['Excelent!','¡Excelente!'],['Foarte bine!','¡Muy bien!'],['Super!','¡Genial!'],['Perfect!','¡Perfecto!'],['Ai dreptate!','¡Tienes razón!']];
+let SES=null;
+function runSession(items, opts){
+  SES={q:items.slice(), i:0, total:items.length, first:0, xp:0, retried:new Set(), opts, cur:null};
+  drawQ();
+}
+function drawQ(){
+  if(SES.i>=SES.q.length) return endSession();
+  const it=SES.q[SES.i], ex=it.ex; SES.cur={ans:null, it};
+  const kinds={mc:'Elige la respuesta',gap:'Completa la frase',listen:'Escucha y elige',pairs:'Une las parejas',build:'Ordena la frase',write:'Escribe en rumano',fix:'Corrige tu frase',verb:'Conjuga'};
+  let body='';
+  if(ex.t==='mc') body=`<div class="prompt">${esc(ex.q)}</div>${optsHTML(ex)}`;
+  else if(ex.t==='gap') body=`<div class="row"><div class="prompt" id="gapq" style="flex:1">${esc(ex.q).replace('___','<span class="gap" id="gapv">&nbsp;</span>')}</div>${spk(ex.q.replace('___', ex.o[ex.a]))}</div><div class="muted">${esc(ex.tr||'')}</div>${optsHTML(ex)}`;
+  else if(ex.t==='listen') body=`<div class="bigspeak"><button data-say="${esc(ex.ro)}" aria-label="Escuchar">${IC.spk}</button><button class="slow" data-say="${esc(ex.ro)}" data-slow="1">lento</button></div>${optsHTML(ex)}`;
+  else if(ex.t==='pairs') body=pairsHTML(ex);
+  else if(ex.t==='build'){ const w=tokens(ex.ro); SES.cur.bank=shuffle(w.concat(ex.extra||[])); SES.cur.line=[];
+    body=`<div class="prompt">${esc(ex.es)}</div><div class="answer-line" id="aline"></div><div class="bank" id="bank">${SES.cur.bank.map((t,i)=>`<button class="tile" data-ti="${i}">${esc(t)}</button>`).join('')}</div>`; }
+  else if(ex.t==='write'||ex.t==='fix'||ex.t==='verb'){
+    const pr = ex.t==='write'?`<div class="prompt">${esc(ex.es)}</div>` : ex.t==='fix'?`<div class="muted small">Escribiste:</div><div class="prompt del">${esc(ex.wrong)}</div>${ex.note?`<div class="muted small">Pista: ${esc(ex.note)}</div>`:''}` : `<div class="prompt">${esc(ex.verb.inf)} <span class="muted" style="font-size:18px">(${esc(ex.verb.es)})</span></div><div class="row"><span class="pill" style="font-size:15px">${esc(PERS[ex.p])}</span><span class="pill wait" style="font-size:15px">${esc(ex.tl)}</span></div>`;
+    body=`${pr}<textarea class="write" id="win" placeholder="Escribe aquí…" autocomplete="off" autocapitalize="off" spellcheck="false"></textarea>${diaKeys('#win')}`; }
+  const el=sheet(`<div class="wrap stack">
+    <div class="qhead"><button class="x" data-close aria-label="Salir">×</button><div class="bar"><i style="width:${SES.i/SES.q.length*100}%"></i></div><span class="hearts">${SES.i+1}/${SES.q.length}</span></div>
+    <div class="kind">${kinds[ex.t]}${SES.retried.has(SES.i)?' · repaso':''}</div>${body}<div style="height:90px"></div>
+  </div>${ex.t==='pairs'?'':'<div class="footer-action"><div class="in"><button class="btn" id="chk" disabled>Comprobar</button></div></div>'}`);
+  el.querySelector('[data-close]').onclick=()=>{ SES=null; closeSheet(); };
+  bindQ(el, ex);
+  if(ex.t==='listen') setTimeout(()=>speak(ex.ro),250);
+}
+const tokens = s => s.replace(/[.,!?¿¡;:«»]/g,'').split(/\s+/).filter(Boolean);
+function optsHTML(ex){ const o=shuffle(ex.o.map((t,i)=>({t,i}))); return `<div class="opts">${o.map(x=>`<button class="opt" data-oi="${x.i}">${esc(x.t)}</button>`).join('')}</div>`; }
+function diaKeys(target){ return `<div class="dia" data-target="${target}">${['ă','â','î','ș','ț'].map(c=>`<button data-ch="${c}" aria-label="Insertar ${c}">${c}</button>`).join('')}</div>`; }
+function bindDia(el){
+  el.querySelectorAll('.dia').forEach(d=>d.querySelectorAll('[data-ch]').forEach(b=>{ b.onmousedown=e=>e.preventDefault(); b.onclick=()=>{ const t=el.querySelector(d.dataset.target); const s=t.selectionStart??t.value.length, e2=t.selectionEnd??s; t.value=t.value.slice(0,s)+b.dataset.ch+t.value.slice(e2); t.focus(); t.selectionStart=t.selectionEnd=s+1; t.dispatchEvent(new Event('input')); }; }));
+}
+function bindQ(el, ex){
+  const chk=el.querySelector('#chk');
+  if(['mc','gap','listen'].includes(ex.t)){
+    el.querySelectorAll('[data-oi]').forEach(b=>b.onclick=()=>{ el.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel')); b.classList.add('sel'); SES.cur.ans=+b.dataset.oi; chk.disabled=false;
+      if(ex.t==='gap') el.querySelector('#gapv').textContent=ex.o[+b.dataset.oi]; });
+    chk.onclick=()=>{ const ok=SES.cur.ans===ex.a; el.querySelectorAll('.opt').forEach(x=>{ if(+x.dataset.oi===ex.a) x.classList.add('right'); else if(x.classList.contains('sel')) x.classList.add('wrong'); });
+      feedback(ok?'exact':'no', ex.t==='listen'?`${ex.ro} = ${ex.o[ex.a]}`:ex.t==='gap'?ex.q.replace('___',ex.o[ex.a]):ex.o[ex.a], ex.t==='mc'?null:(ex.t==='listen'?ex.ro:ex.q.replace('___',ex.o[ex.a]))); };
+  } else if(ex.t==='build'){
+    const line=el.querySelector('#aline'), bank=el.querySelector('#bank');
+    const redraw=()=>{ line.innerHTML=SES.cur.line.map((bi,k)=>`<button class="tile" data-li="${k}">${esc(SES.cur.bank[bi])}</button>`).join('');
+      bank.querySelectorAll('[data-ti]').forEach(b=>b.classList.toggle('used',SES.cur.line.includes(+b.dataset.ti)));
+      line.querySelectorAll('[data-li]').forEach(b=>b.onclick=()=>{ SES.cur.line.splice(+b.dataset.li,1); redraw(); });
+      chk.disabled=!SES.cur.line.length; };
+    bank.querySelectorAll('[data-ti]').forEach(b=>b.onclick=()=>{ const i=+b.dataset.ti; if(SES.cur.line.includes(i)) return; SES.cur.line.push(i); speak(SES.cur.bank[i]); redraw(); });
+    chk.onclick=()=>{ const said=SES.cur.line.map(i=>SES.cur.bank[i]).join(' '); feedback(judge(said,[ex.ro])==='no'?'no':'exact', ex.ro, ex.ro); };
+  } else if(ex.t==='pairs'){ bindPairs(el, ex); }
+  else {
+    const w=el.querySelector('#win'); bindDia(el);
+    w.oninput=()=>{ chk.disabled=!w.value.trim(); };
+    w.onkeydown=e=>{ if(e.key==='Enter'&&!e.shiftKey){ e.preventDefault(); if(!chk.disabled) chk.click(); } };
+    setTimeout(()=>w.focus(),200);
+    chk.onclick=()=>{ let v=w.value; let answers = ex.t==='write'?ex.ro: ex.t==='fix'?[ex.right]: [ex.ans];
+      if(ex.t==='verb') v=v.replace(/^\s*(eu|tu|el|ea|noi|voi|ei|ele)\s+/i,'');
+      const r=judge(v,answers); feedback(r, answers[0], answers[0], r==='loose'?answers.find(a=>fold(clean(a))===fold(clean(v))):null); };
+  }
+}
+function pairsHTML(ex){
+  const L=shuffle(ex.p.map((x,i)=>({t:x[0],i}))), R=shuffle(ex.p.map((x,i)=>({t:x[1],i})));
+  return `<div class="pairs"><div class="col">${L.map(x=>`<button class="opt" data-pl="${x.i}">${esc(x.t)}</button>`).join('')}</div><div class="col">${R.map(x=>`<button class="opt" data-pr="${x.i}">${esc(x.t)}</button>`).join('')}</div></div>`;
+}
+function bindPairs(el, ex){
+  let selL=null, selR=null, miss=0, left=ex.p.length;
+  const tryMatch=()=>{ if(selL===null||selR===null) return;
+    const bl=el.querySelector(`[data-pl="${selL}"]`), br=el.querySelector(`[data-pr="${selR}"]`);
+    if(selL===selR){ bl.classList.remove('sel'); br.classList.remove('sel'); bl.classList.add('gone'); br.classList.add('gone'); speak(ex.p[selL][0]); left--; beep(true);
+      if(!left) setTimeout(()=>feedback(miss?'no':'exact', miss?'Te equivocaste en alguna pareja. Repásalas:':'', ex.p.map(p=>p[0]+' = '+p[1]).join(' · ')),350); }
+    else { miss++; [bl,br].forEach(b=>{ b.classList.add('shake','wrong'); setTimeout(()=>b.classList.remove('shake','wrong','sel'),400); }); beep(false); }
+    selL=selR=null; };
+  el.querySelectorAll('[data-pl]').forEach(b=>b.onclick=()=>{ el.querySelectorAll('[data-pl]').forEach(x=>x.classList.remove('sel')); b.classList.add('sel'); selL=+b.dataset.pl; speak(ex.p[selL][0]); tryMatch(); });
+  el.querySelectorAll('[data-pr]').forEach(b=>b.onclick=()=>{ el.querySelectorAll('[data-pr]').forEach(x=>x.classList.remove('sel')); b.classList.add('sel'); selR=+b.dataset.pr; tryMatch(); });
+}
+function feedback(res, sol, sayText, looseAns){
+  activity();
+  const ok=res!=='no', it=SES.cur.it, ex=it.ex, firstTime=!SES.retried.has(SES.i);
+  beep(ok);
+  if(ok && firstTime){ SES.first++; const x = ex.t==='verb'?5:10; SES.xp+=x; }
+  if(ex.t==='verb'){ P.verbs.n++; if(ok) P.verbs.ok++; }
+  if(SES.opts.onItem) SES.opts.onItem(it, ok);
+  if(!ok && it.key && !SES.opts.review){ P.errs[it.key]=0; }
+  if(!ok && !SES.retried.has(SES.i) && !SES.opts.noRetry){ SES.q.push(it); SES.retried.add(SES.q.length-1); }
+  save();
+  const [pr,pe]=pick(PRAISE);
+  const fb=document.createElement('div'); fb.className='feedback '+(ok?'good':'bad');
+  fb.innerHTML=`<div class="in"><div class="row" style="justify-content:space-between"><h3>${ok?esc(pr):'Răspuns corect:'}</h3>${sayText?spk(sayText):''}</div>
+    ${ok?`<div class="small">${esc(pe)}${res==='loose'?' · Ojo a los diacríticos: <b class="sol">'+esc(looseAns||sol)+'</b>':''}</div>`:`<div class="sol">${esc(sol)}</div>`}
+    ${ex.ex?`<div class="exp">${esc(ex.ex)}</div>`:''}
+    <button class="btn ${ok?'ok':'red'} block" id="cont">Continuar</button></div>`;
+  document.querySelector('.sheet').appendChild(fb);
+  const fa=document.querySelector('.footer-action'); if(fa) fa.remove();
+  if(ok && sayText && ex.t!=='listen') speak(sayText);
+  fb.querySelector('#cont').onclick=()=>{ SES.i++; drawQ(); };
+  fb.querySelector('#cont').focus();
+}
+function endSession(){
+  const s=SES; const r = s.opts.onEnd ? s.opts.onEnd({first:s.first,total:s.total}) : {};
+  addXP(s.xp);
+  const acc=Math.round(s.first/s.total*100);
+  const el=sheet(`<div class="wrap stack result" style="padding-top:48px">
+    <div class="label">${esc(s.opts.title||'Sesión')} completada</div>
+    ${r.stars?`<div style="font-size:48px">${stars(r.stars)}</div>`:''}
+    <div class="big">+${s.xp+(r.bonus||0)} XP</div>
+    <div class="muted">${acc} % de aciertos a la primera</div>
+    ${r.extra||''}
+    <button class="btn block" id="fin" style="margin-top:20px">Continuar</button></div>`);
+  if(acc>=80 && !matchMedia('(prefers-reduced-motion: reduce)').matches) confetti();
+  el.querySelector('#fin').onclick=()=>{ SES=null; closeSheet(); };
+}
+
+/* ---------- vocabulario (repaso espaciado) ---------- */
+const INT=[0,1,3,7,16,35];
+function vocabPool(){
+  const pool=[];
+  UNITS.forEach(u=>{ if(unlocked(u.id) && (P.seen[u.id]||P.units[u.id])) u.vocab.forEach(([r,e])=>pool.push({id:r,ro:r,es:e,u:u.city})); });
+  P.extra.forEach(([r,e])=>{ if(!pool.some(p=>p.id===r)) pool.push({id:r,ro:r,es:e,u:'Tu diario'}); });
+  return pool;
+}
+function dueCards(){ const t=today(); return vocabPool().filter(c=>P.srs[c.id] && P.srs[c.id].due<=t); }
+function startVocab(){
+  const pool=vocabPool();
+  if(!pool.length){ const u=UNITS[0]; toast('Primero abre la teoría de '+u.city+' para desbloquear sus palabras'); openUnit(u.id); return; }
+  const due=shuffle(dueCards()), fresh=shuffle(pool.filter(c=>!P.srs[c.id])).slice(0,Math.max(0,8-Math.min(due.length,8)));
+  let deck=due.slice(0,15).concat(fresh).slice(0,15); if(!deck.length) deck=shuffle(pool).slice(0,10);
+  let i=0, known=0, again=new Set();
+  const draw=()=>{
+    if(i>=deck.length){ addXP(10+known*2); markDone('voc'); checkAch(); const el=sheet(`<div class="wrap stack result" style="padding-top:48px"><div class="label">Repaso terminado</div><div class="big">+${10+known*2} XP</div><div class="muted">${known} de ${deck.length} a la primera</div><button class="btn block" id="fin">Continuar</button></div>`); el.querySelector('#fin').onclick=closeSheet; if(known>=deck.length*0.8) confetti(); return; }
+    const c=deck[i], dir=Math.random()<.5, front=dir?c.es:c.ro, back=dir?c.ro:c.es;
+    const el=sheet(`<div class="wrap stack"><div class="qhead"><button class="x" data-close aria-label="Salir">×</button><div class="bar blue"><i style="width:${i/deck.length*100}%"></i></div><span class="hearts">${i+1}/${deck.length}</span></div>
+      <div class="kind">${dir?'¿Cómo se dice en rumano?':'¿Qué significa?'} · ${esc(c.u)}</div>
+      <button class="card flash" id="fl"><span class="front">${esc(front)}</span><span class="muted small" id="hint">Toca para ver la respuesta</span><span class="back" id="bk2" hidden>${esc(back)}</span></button>
+      <div class="row" id="grade" hidden><button class="btn red" style="flex:1" data-g="0">No la sabía</button><button class="btn ok" style="flex:1" data-g="1">La sabía</button></div></div>`);
+    el.querySelector('[data-close]').onclick=closeSheet;
+    if(!dir) speak(c.ro);
+    el.querySelector('#fl').onclick=()=>{ el.querySelector('#bk2').hidden=false; el.querySelector('#hint').hidden=true; el.querySelector('#grade').hidden=false; if(dir) speak(c.ro); };
+    el.querySelectorAll('[data-g]').forEach(b=>b.onclick=()=>{ activity(); const ok=b.dataset.g==='1', s=P.srs[c.id]||{b:0,due:today()};
+      if(ok){ s.b=Math.min(5,s.b+1); s.due=addDays(today(),INT[s.b]); if(!again.has(c.id)) known++; beep(true); }
+      else { s.b=1; s.due=today(); if(!again.has(c.id)){ again.add(c.id); deck.push(c); } beep(false); }
+      P.srs[c.id]=s; save(); i++; draw(); });
+  }; draw();
+}
+
+/* ---------- conjugación ---------- */
+const TENSES={pr:'Presente',pc:'Pasado (perfect compus)',fu:'Futuro (voi + inf.)'};
+let verbT=new Set(['pr']);
+function openVerbSetup(){
+  const el=sheet(`<div class="wrap stack"><div class="row"><button class="x" data-close aria-label="Cerrar">×</button><span class="label" style="margin-left:auto">Gimnasio de verbos</span></div>
+    <h2 style="font-size:30px">Conjugación</h2><p class="muted" style="margin:0">10 formas al azar. Escribe solo el verbo (o con el pronombre, como prefieras).</p>
+    <div class="label">Tiempos</div><div class="seg">${Object.entries(TENSES).map(([k,t])=>`<button data-t="${k}" aria-pressed="${verbT.has(k)}">${t}</button>`).join('')}</div>
+    <button class="btn block" id="vgo">Empezar · 10 formas</button>
+    <div class="card"><div class="label">Tabla de referencia</div><div class="tablewrap"><table class="mini"><tr><th>verbo</th><th>eu</th><th>el/ea</th><th>noi</th><th>participio</th></tr>${VERBS.map(v=>`<tr><td><b>${esc(v.inf)}</b><br><span class="muted small">${esc(v.es)}</span></td><td>${esc(v.pr[0])}</td><td>${esc(v.pr[2])}</td><td>${esc(v.pr[3])}</td><td>${esc(v.pp||'—')}</td></tr>`).join('')}</table></div></div></div>`);
+  el.querySelector('[data-close]').onclick=closeSheet;
+  el.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{ const k=b.dataset.t; if(verbT.has(k)&&verbT.size>1) verbT.delete(k); else verbT.add(k); b.setAttribute('aria-pressed',verbT.has(k)); el.querySelectorAll('[data-t]').forEach(x=>x.setAttribute('aria-pressed',verbT.has(x.dataset.t))); });
+  el.querySelector('#vgo').onclick=()=>{
+    const items=[]; let guard=0;
+    while(items.length<10 && guard++<200){ const v=pick(VERBS), t=pick([...verbT]), p=Math.floor(Math.random()*6);
+      if(t!=='pr' && !v.pp) continue;
+      const ans = t==='pr'?v.pr[p] : t==='pc'?AUX_PC[p]+' '+v.pp : AUX_FU[p]+' '+v.fu;
+      items.push({ex:{t:'verb', verb:v, p, tl:TENSES[t].split(' (')[0], ans}}); }
+    runSession(items,{title:'Conjugación', noRetry:false, onEnd:()=>{ checkAch(); return {}; }});
+  };
+}
+
+/* ---------- mis errores ---------- */
+function startErrors(){
+  const items=[];
+  Object.keys(P.errs).forEach(k=>{ const [u,i]=k.split(':'); const unit=UNITS[unitIdx(u)]; if(unit&&unit.ex[+i]) items.push({ex:unit.ex[+i], key:k, kind:'u'}); else delete P.errs[k]; });
+  P.myErrs.forEach((e,j)=>items.push({ex:{t:'fix', wrong:e.wrong, right:e.right, note:e.note}, ref:e, kind:'m'}));
+  const list=shuffle(items).slice(0,12);
+  runSession(list,{title:'Mis errores', review:true, noRetry:true, onItem:(it,ok)=>{
+    if(it.kind==='u'){ if(ok){ P.errs[it.key]=(P.errs[it.key]||0)+1; if(P.errs[it.key]>=2) delete P.errs[it.key]; } else P.errs[it.key]=0; }
+    else { const e=it.ref; if(ok){ e.ok=(e.ok||0)+1; if(e.ok>=2) P.myErrs=P.myErrs.filter(x=>x!==e); } else e.ok=0; }
+  }, onEnd:()=>({})});
+}
+function addMyErr(wrong, right, note){
+  if(!wrong||!right||clean(wrong)===clean(right)) return;
+  if(P.myErrs.some(e=>clean(e.right)===clean(right))) return;
+  P.myErrs.push({wrong:String(wrong).slice(0,200), right:String(right).slice(0,200), note:note?String(note).slice(0,160):'', ok:0});
+  if(P.myErrs.length>60) P.myErrs.shift();
+}
+
+/* ---------- IA: escenas ---------- */
+function aiError(e){
+  if(!S.sample) return 'Las escenas y el diario usan IA: abre la app desde Claude (en la app de tu móvil o en claude.ai) para usarlos.';
+  const c=e&&e.code;
+  if(c==='rate_limited') return 'Has llegado al límite de uso por ahora. Prueba un poco más tarde.';
+  if(c==='not_granted') return 'Hace falta tu permiso para que la app use Claude. Vuelve a intentarlo y acepta.';
+  return 'No he podido contestar. Vuelve a intentarlo.';
+}
+async function startScene(id){
+  let sc, who, free=false;
+  if(id.startsWith('free:')){ who=id.slice(5); free=true; sc={id:'free_'+who, who, t:'Conversación libre', d:'Habla de lo que quieras con '+CAST[who].name+'.', goal:'free everyday conversation about family life, food, work, plans; keep it natural', open:FREE_OPEN[who][0], open_es:FREE_OPEN[who][1]}; }
+  else { sc=SCENES.find(s=>s.id===id); who=sc.who; }
+  const C=CAST[who];
+  const msgs=[{from:'npc', ro:sc.open, es:sc.open_es}];
+  let busy=false, ended=false, corrections=[], turns=0;
+  const el=sheet(`<div class="wrap stack">
+    <div class="row"><button class="x" data-close aria-label="Salir">×</button><span class="av ${who}">${C.name[0]}</span><div style="flex:1;min-width:0"><b>${esc(C.name)}</b><div class="small muted">${esc(sc.t)}</div></div>${free?'<button class="btn ghost" id="endFree" style="padding:8px 12px">Terminar</button>':''}</div>
+    <div class="scene-goal"><b>Objetivo:</b> ${esc(sc.d)}</div>
+    <div class="chat" id="chat"></div></div>
+    <div class="composer"><div class="in">${diaKeys('#cin')}<div class="line"><textarea id="cin" placeholder="Escribe en rumano…" rows="1" aria-label="Tu mensaje" spellcheck="false"></textarea><button class="send" id="csend" aria-label="Enviar">${IC.send}</button></div>
+    <div class="row small"><button id="chint" style="color:var(--blue);font-weight:800">💡 ¿Qué puedo decir?</button></div></div></div>`);
+  const chat=el.querySelector('#chat'), inp=el.querySelector('#cin');
+  bindDia(el);
+  const draw=()=>{ chat.innerHTML=msgs.map((m,k)=>{
+      if(m.from==='npc') return `<div class="msg npc"><span class="av ${who}">${C.name[0]}</span><div class="bubble">${esc(m.ro)}<span class="tr" ${m.showEs?'':'hidden'}>${esc(m.es||'')}</span><span class="tools"><button data-say="${esc(m.ro)}">▶ Escuchar</button><button data-tr="${k}">${m.showEs?'Ocultar':'Traducir'}</button></span></div></div>`;
+      if(m.from==='me') return `<div class="msg me"><div class="bubble">${esc(m.ro)}</div></div>${m.fix?`<div class="fix">✏️ <b>${esc(m.fix)}</b>${m.note?'<br><span class="small">'+esc(m.note)+'</span>':''}</div>`:m.checked?'<div class="fix okk">✓ Correcto</div>':''}`;
+      if(m.from==='hint') return `<div class="fix">💡 <b>${esc(m.ro)}</b><br><span class="small">${esc(m.es)}</span></div>`;
+      if(m.from==='sys') return `<div class="card small">${m.html}</div>`;
+      return ''; }).join('') + (busy?`<div class="typing">${esc(C.name)} está escribiendo…</div>`:'');
+    chat.querySelectorAll('[data-tr]').forEach(b=>b.onclick=()=>{ const m=msgs[+b.dataset.tr]; m.showEs=!m.showEs; draw(); });
+    const se=el.querySelector('#csend'); se.disabled=busy||ended; inp.disabled=ended;
+    requestAnimationFrame(()=>window.scrollTo(0,document.body.scrollHeight)); el.scrollTop=el.scrollHeight; };
+  draw(); setTimeout(()=>speak(sc.open),300);
+  const transcript=()=>msgs.filter(m=>m.from==='npc'||m.from==='me').map(m=>(m.from==='npc'?C.name:'José Antonio')+': '+m.ro).join('\n');
+  const finish=(score, summary)=>{
+    ended=true; const xp = free ? Math.min(40,turns*5) : 20+10*score;
+    if(!free){ const prev=P.scenes[sc.id]; P.scenes[sc.id]={best:Math.max(score,prev?.best||0), n:(prev?.n||0)+1}; P.rel[who]=Math.min(100,(P.rel[who]||0)+score*8); }
+    else P.rel[who]=Math.min(100,(P.rel[who]||0)+Math.min(4,turns));
+    corrections.forEach(c=>addMyErr(c.wrong,c.right,c.note));
+    addXP(xp); if(turns>=2) markDone('scena'); checkAch(); save();
+    msgs.push({from:'sys', html:`<div class="stack result" style="gap:8px"><div class="label">Escena terminada</div>${free?'':stars(score)}<div class="big" style="font-size:40px">+${xp} XP</div>${summary?'<div>'+esc(summary)+'</div>':''}${corrections.length?'<div class="small muted">'+corrections.length+' corrección'+(corrections.length>1?'es guardadas':' guardada')+' en «Mis errores».</div>':''}<button class="btn block" data-fin>Volver</button></div>`});
+    draw(); chat.querySelector('[data-fin]').onclick=closeSheet; if(score>=2||free) confetti();
+  };
+  el.querySelector('[data-close]').onclick=closeSheet;
+  const ef=el.querySelector('#endFree'); if(ef) ef.onclick=()=>{ if(!ended){ if(turns) finish(0,''); else closeSheet(); } };
+  const send=async()=>{
+    const t=inp.value.trim(); if(!t||busy||ended) return;
+    if(!S.sample){ msgs.push({from:'sys',html:esc(aiError())}); draw(); return; }
+    activity(); inp.value=''; const me={from:'me',ro:t}; msgs.push(me); busy=true; turns++; draw();
+    const prompt=`You are role-playing inside "Casa Bilingvă", a Romanian-learning app for José Antonio, a Spanish speaker from Seville married to Ruxandra (Romanian). They have a 2-year-old son, Rafa. Ruxandra's parents are Gabriela and Marius.
+Your character: ${C.persona}
+Scene (described to the learner in Spanish): ${sc.d}
+Learner's goal in this scene: ${sc.goal}
+Learner level: ${level()}.
+Rules:
+- "reply": ONLY Romanian, in character, 1-2 short sentences with vocabulary suited to his level, always with correct diacritics (ă â î ș ț). Ask him one question at a time to move toward the goal.
+- Evaluate ONLY his last message. If it has real mistakes (grammar, wrong word, wrong form), put the full corrected sentence in "correction" and a very short explanation in Spanish in "note_es". Missing diacritics alone: correct it but say so briefly. If it is correct, "correction" is null. If he wrote in Spanish or mixed, give the Romanian version in "correction".
+- ${free?'This is a free conversation: never end it (done=false).':'When the goal is clearly achieved, or after about 8 of his messages, close the scene warmly in character, set "done": true, "score" 1-3 (3 = fluent and almost no mistakes) and "summary_es": 1-2 encouraging sentences of feedback in Spanish naming one thing to improve.'}
+Return ONLY JSON: {"reply":"...","reply_es":"Spanish translation of reply","correction":null,"note_es":"","done":false,"score":0,"summary_es":""}
+Conversation so far:
+${transcript()}`;
+    try{
+      const r=await S.sample.json(prompt);
+      if(r && r.correction && clean(r.correction)!==clean(t)){ me.fix=String(r.correction); me.note=r.note_es||''; corrections.push({wrong:t,right:me.fix,note:me.note}); } else me.checked=true;
+      busy=false;
+      if(r && r.reply){ msgs.push({from:'npc', ro:String(r.reply), es:String(r.reply_es||'')}); draw(); speak(r.reply); }
+      if(r && r.done && !free) finish(Math.max(1,Math.min(3,+r.score||1)), r.summary_es||'');
+    }catch(e){ busy=false; turns--; msgs.push({from:'sys',html:esc(aiError(e))}); }
+    draw();
+  };
+  el.querySelector('#csend').onclick=send;
+  inp.onkeydown=e=>{ if(e.key==='Enter'&&!e.shiftKey){ e.preventDefault(); send(); } };
+  el.querySelector('#chint').onclick=async()=>{
+    if(busy||ended) return;
+    if(!S.sample){ msgs.push({from:'sys',html:esc(aiError())}); draw(); return; }
+    busy=true; draw();
+    try{ const h=await S.sample.json(`A Spanish-speaking learner of Romanian (level ${level()}) is in this conversation and does not know what to answer. Scene goal: ${sc.goal}.\n${transcript()}\nSuggest ONE simple, natural answer he could give next. Return ONLY JSON: {"ro":"answer in Romanian with correct diacritics","es":"Spanish translation"}`,{modelTier:'quick'});
+      msgs.push({from:'hint',ro:String(h.ro||''),es:String(h.es||'')}); }catch(e){ msgs.push({from:'sys',html:esc(aiError(e))}); }
+    busy=false; draw();
+  };
+}
+
+/* ---------- diario ---------- */
+function openJournal(){
+  const mine=diario().slice(0,15);
+  const el=sheet(`<div class="wrap stack">
+    <div class="row"><button class="x" data-close aria-label="Cerrar">×</button><span class="label" style="margin-left:auto">Jurnal</span></div>
+    <h2 style="font-size:30px">Tu día en 3 frases</h2>
+    <p class="muted" style="margin:0">Escribe en rumano qué has hecho hoy. Si no sabes una palabra, ponla en español: te la traduzco y la añado a tu vocabulario.</p>
+    <textarea class="write" id="jin" placeholder="Azi am lucrat… Am mâncat… Seara am…" spellcheck="false"></textarea>${diaKeys('#jin')}
+    <button class="btn red block" id="jgo">Corregir y guardar</button>
+    <div id="jres"></div>
+    ${mine.length?`<div class="label">Entradas anteriores</div>${mine.map(d=>`<div class="card stack" style="gap:6px"><div class="small muted">${esc(d.date)}</div><div class="del" style="color:var(--muted)">${esc(d.text)}</div><div style="color:var(--ok);font-weight:700">${esc(d.corrected||'')}</div>${d.comment?`<div class="fix"><b>Ruxandra:</b> ${esc(d.comment)}</div>`:''}</div>`).join('')}`:''}
+  </div>`);
+  el.querySelector('[data-close]').onclick=closeSheet; bindDia(el);
+  const go=el.querySelector('#jgo'), out=el.querySelector('#jres');
+  go.onclick=async()=>{
+    const t=el.querySelector('#jin').value.trim(); if(t.length<8){ toast('Escribe al menos una frase'); return; }
+    if(!S.sample){ out.innerHTML=`<div class="card small">${esc(aiError())}</div>`; return; }
+    activity(); go.disabled=true; go.textContent='Corrigiendo…';
+    try{
+      const r=await S.sample.json(`You are a warm, precise Romanian teacher. The learner (Spanish speaker, level ${level()}) wrote this diary entry in Romanian about his day:\n"""${t}"""\nReturn ONLY JSON: {"corrected":"the whole text corrected into natural Romanian with correct diacritics, keeping his meaning and simple style","errors":[{"wrong":"his exact fragment","right":"corrected fragment","why_es":"very short explanation in Spanish"}],"praise_es":"one encouraging sentence in Spanish naming something concrete he did well","new_words":[["romanian word","spanish meaning"]],"score":2}\nRules: at most 6 errors, the most important ones. Parts written in Spanish: translate them in "corrected" and list them as errors with why_es "Así se dice en rumano". new_words: at most 3 useful words from the corrected text he probably does not know. score 1-3.`);
+      const errs=Array.isArray(r.errors)?r.errors.slice(0,6):[];
+      errs.forEach(e=>addMyErr(e.wrong,e.right,e.why_es));
+      (Array.isArray(r.new_words)?r.new_words.slice(0,3):[]).forEach(w=>{ if(Array.isArray(w)&&w[0]&&!P.extra.some(x=>x[0]===w[0])) P.extra.push([String(w[0]),String(w[1]||'')]); });
+      P.diaryN++; const xp=15+5*Math.max(1,Math.min(3,+r.score||1)); addXP(xp); markDone('jurnal'); checkAch(); save();
+      await addDoc('diario',{date:today(), text:t, corrected:String(r.corrected||''), errors:errs});
+      el.querySelector('#jin').value='';
+      out.innerHTML=`<div class="card stack"><div class="row" style="justify-content:space-between"><div class="label">Corregido · +${xp} XP</div>${spk(String(r.corrected||''))}</div>
+        <div style="color:var(--ok);font-weight:700;font-size:18px">${esc(r.corrected||'')}</div>
+        ${errs.map(e=>`<div class="fix"><span class="del">${esc(e.wrong)}</span> → <b>${esc(e.right)}</b><br><span class="small">${esc(e.why_es||'')}</span></div>`).join('')}
+        ${r.praise_es?`<div class="fix okk">${esc(r.praise_es)}</div>`:''}
+        ${Array.isArray(r.new_words)&&r.new_words.length?`<div class="small muted">Añadidas a tu vocabulario: ${r.new_words.slice(0,3).map(w=>esc(w[0])).join(', ')}</div>`:''}
+        <div class="small muted">Ruxandra puede leerlo y dejarte un comentario.</div></div>`;
+      if(errs.length<=1) confetti();
+    }catch(e){ out.innerHTML=`<div class="card small">${esc(aiError(e))}</div>`; }
+    go.disabled=false; go.textContent='Corregir y guardar';
+  };
+}
+
+/* ---------- retos de Ruxandra (alumno) ---------- */
+function openRetosEu(){
+  const R=retos().filter(r=>r.kind!=='vida');
+  const el=sheet(`<div class="wrap stack"><div class="row"><button class="x" data-close aria-label="Cerrar">×</button><span class="label" style="margin-left:auto">Retos de Ruxandra</span></div>
+    <h2 style="font-size:30px">Ruxandra te pone a prueba</h2>
+    ${R.length?R.slice(0,20).map(r=>`<div class="card stack" data-r="${r.id}"><div class="row"><span class="av rux">R</span><b style="flex:1">${esc(r.text)}</b>${spk(r.text)}</div>
+      ${r.status==='pending'?`${r.comment?`<div class="fix"><b>Ruxandra:</b> ${esc(r.comment)}</div>`:''}<textarea class="txt" data-ans id="ra_${r.id}" placeholder="Responde en rumano…" spellcheck="false"></textarea>${diaKeys('#ra_'+r.id)}<button class="btn red" data-send>Enviar respuesta</button>`
+      : r.status==='answered'?`<div class="bubble">${esc(r.answer)}</div><span class="pill wait">Esperando su nota</span>`
+      : `<div class="bubble">${esc(r.answer)}</div><div class="row">${stars(r.stars||0)}<span class="pill ok">Aprobado</span></div>${r.comment?`<div class="fix"><b>Ruxandra:</b> ${esc(r.comment)}</div>`:''}`}</div>`).join(''):'<div class="card muted small">Todavía no hay retos. Pídele a Ruxandra que abra la app en su móvil y te ponga uno.</div>'}
+  </div>`);
+  el.querySelector('[data-close]').onclick=closeSheet; bindDia(el);
+  el.querySelectorAll('[data-r]').forEach(c=>{ const b=c.querySelector('[data-send]'); if(b) b.onclick=async()=>{ const v=c.querySelector('[data-ans]').value.trim(); if(!v){ toast('Escribe tu respuesta'); return; } activity(); await updDoc('retos',c.dataset.r,{status:'answered',answer:v,answeredAt:Date.now()}); addXP(5); toast('Enviado a Ruxandra'); openRetosEu(); }; });
+}
+
+/* ---------- confeti ---------- */
+function confetti(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const cv=$('#confetti'); cv.hidden=false; const x=cv.getContext('2d'); cv.width=innerWidth; cv.height=innerHeight;
+  const cs=getComputedStyle(document.documentElement); const cols=['--red','--blue','--gold','--ok'].map(v=>cs.getPropertyValue(v).trim());
+  const ps=Array.from({length:120},()=>({x:Math.random()*cv.width,y:-20-Math.random()*cv.height*.4,vx:(Math.random()-.5)*3,vy:2+Math.random()*3,s:5+Math.random()*6,r:Math.random()*6,c:pick(cols)}));
+  let f=0; const tick=()=>{ x.clearRect(0,0,cv.width,cv.height); ps.forEach(p=>{ p.x+=p.vx; p.y+=p.vy; p.r+=.1; x.save(); x.translate(p.x,p.y); x.rotate(p.r); x.fillStyle=p.c; x.fillRect(-p.s/2,-p.s/2,p.s,p.s*.6); x.restore(); });
+    if(++f<150) requestAnimationFrame(tick); else { x.clearRect(0,0,cv.width,cv.height); cv.hidden=true; } }; tick();
+}
+
+/* ---------- arranque ---------- */
+async function boot(){
+  loadLocal();
+  const h=(location.hash||'').slice(1).toLowerCase();
+  if(h==='ruxandra'){ ROLE='rux'; lsSet('role','rux'); TAB='retos'; } else if(h==='jose'){ ROLE='eu'; lsSet('role','eu'); TAB='azi'; }
+  render();
+  if(!(window.claude && typeof window.claude.use==='function')) return;
+  try{
+    const [db, sample] = await Promise.all([claude.use('db').catch(()=>null), claude.use('sample').catch(()=>null)]);
+    S.sample=sample;
+    if(db){
+      S.db=db; S.online=true; S.progRef=db.doc('casa/progress');
+      S.progRef.onSnapshot(snap=>{
+        if(!snap.exists){ if(ROLE==='eu' && P.updatedAt){ dirty=true; flush(); } return; }
+        const d=snap.data(); if(d && d.at>P.updatedAt){ try{ const np=Object.assign(DEF(),JSON.parse(d.s)); np.updatedAt=d.at; P=np; lsSet('P',d.s); }catch(e){} if(!SES) softRender(); }
+      }, e=>console.warn(e));
+      db.collection('retos').orderBy('at','desc').limit(200).onSnapshot(q=>{ S.retos=q.docs.map(x=>({id:x.id,...x.data()})); creditRetos(); if(!SES) softRender(); }, e=>console.warn(e));
+      db.collection('diario').orderBy('at','desc').limit(200).onSnapshot(q=>{ S.diario=q.docs.map(x=>({id:x.id,...x.data()})); if(!SES) softRender(); }, e=>console.warn(e));
+    }
+  }catch(e){ console.warn(e); }
+  if(!SES && !$('#layer').innerHTML) render();
+}
+boot();
+
+</script>

@@ -1,0 +1,42 @@
+plugins {
+    id 'com.android.application'
+}
+
+// Enlace de la app Casa Bilingvă (artefacto de Claude)
+def APP = "https://claude.ai/artifact/F3JZNmnHcRz4tMbuZ9shT3"
+
+android {
+    namespace 'ro.casabilingva.launcher'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'ro.casabilingva'
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName '1.0'
+    }
+
+    flavorDimensions 'persona'
+    productFlavors {
+        jose {
+            dimension 'persona'
+            applicationIdSuffix '.jose'
+            resValue 'string', 'app_name', 'Casa Bilingvă'
+            buildConfigField 'String', 'APP_URL', "\"${APP}#jose\""
+        }
+        ruxandra {
+            dimension 'persona'
+            applicationIdSuffix '.ruxandra'
+            resValue 'string', 'app_name', 'Casa Bilingvă'
+            buildConfigField 'String', 'APP_URL', "\"${APP}#ruxandra\""
+        }
+    }
+
+    buildFeatures { buildConfig true }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
